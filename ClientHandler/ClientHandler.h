@@ -5,7 +5,11 @@
 #ifndef MILESTONE_2_CLIENTHANDLER_H
 #define MILESTONE_2_CLIENTHANDLER_H
 
+#include <iostream>
+using namespace std;
 class ClientHandler {
+public:
+    void handleCLient(istream is,ostream os);
 
 };
 
