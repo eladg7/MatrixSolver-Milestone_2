@@ -7,4 +7,5 @@ add_executable(Milestone_2 main.cpp
         Server/Server.h
         ClientHandler/ClientHandler.h
         ClientHandler/Solver.h
-        ClientHandler/CacheManager.h)
+        ClientHandler/CacheManager.h
+        Server/MySerialServer.h Server/MySerialServer.cpp)
