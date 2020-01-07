@@ -3,4 +3,8 @@ project(Milestone_2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Milestone_2 main.cpp)
+add_executable(Milestone_2 main.cpp
+        Server/Server.h
+        ClientHandler/ClientHandler.h
+        ClientHandler/Solver.h
+        ClientHandler/CacheManager.h)
