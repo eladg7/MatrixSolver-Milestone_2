@@ -1,0 +1,3 @@
+/home/elad/CLionProjects/Milestone 2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/elad/CLionProjects/Milestone 2/cmake-build-debug/CMakeFiles/Milestone_2.dir
+/home/elad/CLionProjects/Milestone 2/cmake-build-debug/CMakeFiles/edit_cache.dir
