@@ -24,7 +24,7 @@ public:
     }
 
     virtual T get(const string &key) {
-        T obj;
+        T obj=NULL;
         auto iter = this->mymap.find(key);
         if (iter != this->mymap.end()) {
             obj = iter->second;

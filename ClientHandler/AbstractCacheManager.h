@@ -9,7 +9,7 @@
 
 template <typename T>
 class AbstractCacheManager:public CacheManager<T>{
-public:
+protected:
     virtual void insert(const string &key, const T &obj) {
         // not present in cache
         if (this->mymap.find(key) == this->mymap.end()) {
