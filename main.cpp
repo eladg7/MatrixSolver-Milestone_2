@@ -1,6 +1,9 @@
 #include <iostream>
+#include "Server/MySerialServer.h"
+#include "ClientHandler/MyTestClientHandler.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    MySerialServer<string, string> s;
+    MyTestClientHandler<string, string> handler;
     return 0;
 }
