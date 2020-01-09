@@ -3,7 +3,10 @@
 #include "ClientHandler/MyTestClientHandler.h"
 
 int main() {
-    MySerialServer<string, string> s;
+    MySerialServer s;
     MyTestClientHandler<string, string> handler;
+    s.open(4200, &handler);
+    s.start();
+    s.joinThreads();
     return 0;
 }

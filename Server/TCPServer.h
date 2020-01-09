@@ -8,8 +8,8 @@
 
 using namespace server_side;
 
-template<typename P, typename S>
-class TCPServer : public Server<P, S> {
+
+class TCPServer : public Server{
 protected:
     sockaddr_in address{};
 
@@ -53,7 +53,7 @@ protected:
         return 0;
     }
 
-    virtual bool open(int port, ClientHandler<P, S> *c) {
+    virtual bool open(int port, ClientHandler *c) {
         int result = this->openSocket();
         if (result < 0) {
             this->stop();
