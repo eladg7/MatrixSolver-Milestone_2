@@ -11,10 +11,9 @@ using namespace server_side;
 class MySerialServer : public TCPServer {
 private:
     queue<int> clientsSocketQueue{};
-    vector<thread> threadsOfServer;
     mutex mutexServer;
 public:
-    virtual bool open(int port, ClientHandler*c) {
+    virtual bool open(int port, ClientHandler *c) {
         if (!TCPServer::open(port, c)) {
             cerr << "Could not open server" << endl;
             return false;
@@ -23,27 +22,13 @@ public:
 
     virtual void stop() {
         this->isRunning = false;
-        auto it = threadsOfServer.begin();
-        while (it != threadsOfServer.end()) {//stop all threads of server.
-            it->join();
-            it++;
-        }
         close(this->socketFD);
     }
 
-    virtual void joinThreads() {
-        auto it = threadsOfServer.begin();
-        while (it != threadsOfServer.end()) {
-            it->join();
-            it++;
-        }
-    }
-
     virtual void start() {
+        threadsOfServer.clear();
         thread acceptThread(acceptingClientThread, this);
-        acceptThread.detach();
         thread handleThread(handlingClientThread, this);
-        handleThread.detach();
         threadsOfServer.push_back(move(acceptThread));
         threadsOfServer.push_back(move(handleThread));
     }
@@ -77,6 +62,7 @@ public:
                                       (socklen_t *) &this->address);
             if (clientSocket < 0) {
                 cerr << "Cannot accept connection of client socket #:" << clientSocket << endl;
+                stop();
                 return -2;
             }
 
