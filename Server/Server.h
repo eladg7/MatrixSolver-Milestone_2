@@ -15,7 +15,7 @@ namespace server_side {
 
         int port{};
     public:
-        virtual bool open(int port, ClientHandler<P, S> c) = 0;
+        virtual bool open(int port, ClientHandler<P, S> *c) = 0;
 
         virtual void stop() = 0;
 
