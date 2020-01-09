@@ -13,13 +13,30 @@ private:
     Solver<P, S> solver;
     CacheManager<S> cm;
 public:
-    virtual void handleClient(istream &is, ostream &os) {
-        string line;
+    virtual void handleClient(int *clientFD) {
         char buffer[BUFFER_SIZE] = {0};
+        int isRead = 0;
+        string solution;
 
-        if (cm.get()) {
+        while (*clientFD != -1) {
+            isRead = read(*clientFD, buffer, sizeof(buffer));
+            if (isRead <= 0) {//error getting info from client.
+                cerr << "Couldn't read for client." << endl;
+                break;
+            }
+            if (strcmp(buffer, "end") == 0) {
+                break;
+            } else if (cm.keyExist(buffer)) {
+                solution = solver.toString(cm.get(buffer));
+            } else {
+                string s = buffer;
+                solution = solver.toString(
+                        solver.solve(solver.createProblemFromString(s)));
+            }
+            this->writeToClient(*clientFD, solution.c_str());
 
         }
+
     }
 
 };

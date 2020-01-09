@@ -48,10 +48,6 @@ protected:
         }
     }
 
-public:
-    virtual bool keyExist(const string &key) {
-        return this->mymap.find(key);
-    }
 };
 
 #endif //MILESTONE_2_ABSTRACTCACHEMANAGER_H
