@@ -4,6 +4,8 @@
 #include <queue>
 #include <thread>
 #include <mutex>
+#include <algorithm>
+#include <functional>
 #include "TCPServer.h"
 
 using namespace server_side;
@@ -23,27 +25,17 @@ public:
 
     virtual void stop() {
         this->isRunning = false;
-        auto it = threadsOfServer.begin();
-        while (it != threadsOfServer.end()) {//stop all threads of server.
-            it->join();
-            it++;
-        }
         close(this->socketFD);
     }
 
     virtual void joinThreads() {
-        auto it = threadsOfServer.begin();
-        while (it != threadsOfServer.end()) {
-            it->join();
-            it++;
-        }
+        std::for_each(threadsOfServer.begin(),threadsOfServer.end(),
+                std::mem_fn(&std::thread::join));
     }
 
     virtual void start() {
         thread acceptThread(acceptingClientThread, this);
-        acceptThread.detach();
         thread handleThread(handlingClientThread, this);
-        handleThread.detach();
         threadsOfServer.push_back(move(acceptThread));
         threadsOfServer.push_back(move(handleThread));
     }
@@ -54,7 +46,10 @@ public:
                    && server->clientsSocketQueue.size() > MAX_CONNECTED) {
                 usleep(10000);
             }
-            server->acceptClient();
+            int succeed= server->acceptClient();
+            if(succeed <0){
+                break;
+            }
             usleep(5000);
         }
     }
@@ -76,7 +71,8 @@ public:
             int clientSocket = accept(this->socketFD, (struct sockaddr *) &this->address,
                                       (socklen_t *) &this->address);
             if (clientSocket < 0) {
-                cerr << "Cannot accept connection of client socket #:" << clientSocket << endl;
+                cerr << "Cannot accept connection of client"  << endl;
+                stop();
                 return -2;
             }
 
