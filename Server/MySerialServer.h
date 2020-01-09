@@ -3,6 +3,7 @@
 
 #include <queue>
 #include <thread>
+#include <mutex>
 #include "TCPServer.h"
 
 using namespace server_side;
@@ -11,11 +12,10 @@ template<typename P, typename S>
 class MySerialServer : public TCPServer<P, S> {
 private:
     queue<int> clientsSocketQueue{};
-    unordered_map<string, thread> runningThreadsMap;
-    int *acceptingClientThreadPointer{};
-    int *handlingClientThreadPointer{};
+    vector<thread> threadsOfServer;
+    mutex mutexServer;
 public:
-    virtual bool open(int port, ClientHandler<P, S> c) {
+    virtual bool open(int port, ClientHandler<P, S> *c) {
         if (!TCPServer<P, S>::open(port, c)) {
             cerr << "Could not open server" << endl;
             return false;
@@ -24,35 +24,40 @@ public:
 
     virtual void stop() {
         this->isRunning = false;
-        thread th1(*acceptingClientThreadPointer);
-        thread th2(*handlingClientThreadPointer);
-        th1.join();
-        th2.join();
+        auto it=threadsOfServer.begin();
+        while(it != threadsOfServer.end()){//stop all threads of server.
+            it->join();
+            it++;
+        }
         close(this->socketFD);
     }
 
     virtual void start() {
-        thread acceptThread(acceptingClientThread, ref(*this));
-        thread handleThread(handlingClientThread, ref(*this));
-        runningThreadsMap["acceptingClientThread"] = &acceptThread;
+        thread acceptThread(acceptingClientThread, this);
+        thread handleThread(handlingClientThread, this);
+        threadsOfServer.push_back(move(acceptThread));
+        threadsOfServer.push_back(move(handleThread));
     }
 
-    static void acceptingClientThread(MySerialServer &server) {
-        server.acceptingClientThreadPointer = this_thread::get_id();
-        while (server.isRunning) {
-            while (server.isRunning && server.clientsSocketQueue.size() > MAX_CONNECTED) {
+    static void acceptingClientThread(MySerialServer *server) {
+        while (server->isRunning) {
+            while (server->isRunning
+            && server->clientsSocketQueue.size() > MAX_CONNECTED) {
                 usleep(10000);
             }
-            server.acceptClients();
+            server->acceptClient();
             usleep(5000);
         }
     }
 
-    static void handlingClientThread(MySerialServer &server) {
-        server.handlingClientThreadPointer = this_thread::get_id();
-        while (server.isRunning) {
-            server.clientHandler.handleClient(server.clientsSocketQueue.front(), &server.isRunning);
-            server.clientsSocketQueue.pop();
+    static void handlingClientThread(MySerialServer *server) {
+        while (server->isRunning) {
+            server->clientHandler->handleClient(
+                    server->clientsSocketQueue.front(), &server->isRunning);
+            server->mutexServer.lock();
+            server->clientsSocketQueue.pop();
+            server->mutexServer.unlock();
+
             usleep(5000);
         }
     }
@@ -67,7 +72,9 @@ public:
             }
 
             cout << "Connection successful" << endl;
+            mutexServer.lock();
             this->clientsSocketQueue.push(clientSocket);
+            mutexServer.unlock();
 
             return 0;
         }
