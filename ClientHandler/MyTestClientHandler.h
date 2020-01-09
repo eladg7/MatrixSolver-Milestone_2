@@ -5,16 +5,21 @@
 
 #include "ClientHandler.h"
 
-template<typename P,typename S>
-class MyTestClientHandler : public ClientHandler<P,S> {
+#define BUFFER_SIZE 256
+
+template<typename P, typename S>
+class MyTestClientHandler : public ClientHandler<P, S> {
 private:
-    Solver<P,S> solver;
-    CacheManager <S>cm;
+    Solver<P, S> solver;
+    CacheManager<S> cm;
 public:
-    virtual void handleClient(istream &is,ostream &os){
-        string str;
+    virtual void handleClient(istream &is, ostream &os) {
+        string line;
+        char buffer[BUFFER_SIZE] = {0};
 
+        if (cm.get()) {
 
+        }
     }
 
 };
