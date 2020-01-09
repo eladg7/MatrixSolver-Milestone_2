@@ -6,10 +6,16 @@
 #define MILESTONE_2_CLIENTHANDLER_H
 
 #include <iostream>
+#include "Solver.h"
+#include "CacheManager.h"
+
 using namespace std;
+
+template<typename P,typename S>
 class ClientHandler {
+
 public:
-    void handleCLient(istream is,ostream os);
+    virtual void handleClient(istream is,ostream os)=0;
 
 };
 

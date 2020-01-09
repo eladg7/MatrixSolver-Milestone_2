@@ -4,15 +4,18 @@
 
 
 #include "ClientHandler.h"
-#include "Solver.h"
-#include "CacheManager.h"
-template<typename  T>
-class MyTestClientHandler : public ClientHandler {
 
+template<typename P,typename S>
+class MyTestClientHandler : public ClientHandler<P,S> {
 private:
-    Solver solver;
-    CacheManager <T>cm;
+    Solver<P,S> solver;
+    CacheManager <S>cm;
 public:
+    virtual void handleClient(istream &is,ostream &os){
+        string str;
+
+
+    }
 
 };
 

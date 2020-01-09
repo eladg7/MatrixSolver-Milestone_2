@@ -25,7 +25,6 @@ public:
     virtual T get(const string &key)=0;
     virtual void foreach(void (*f)(T &))=0;
 
-
 };
 
 #endif //MILESTONE_2_CACHEMANAGER_H
