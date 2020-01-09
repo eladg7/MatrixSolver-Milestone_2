@@ -8,11 +8,14 @@ namespace server_side {
     protected:
         bool isRunning = false;
 
-        ClientHandler*clientHandler;
+        ClientHandler *clientHandler;
 
         int socketFD{};
 
         int port{};
+
+        vector<thread> threadsOfServer;
+
     public:
         virtual bool open(int port, ClientHandler *c) = 0;
 
@@ -23,6 +26,14 @@ namespace server_side {
         }
 
         virtual void start() = 0;
+
+        virtual void joinThreads() {
+            auto it = threadsOfServer.begin();
+            while (it != threadsOfServer.end()) {
+                it->join();
+                it++;
+            }
+        }
 
         ~Server() = default;
     };
