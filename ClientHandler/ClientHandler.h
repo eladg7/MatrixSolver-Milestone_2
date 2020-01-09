@@ -1,7 +1,3 @@
-//
-// Created by elad on 07/01/2020.
-//
-
 #ifndef MILESTONE_2_CLIENTHANDLER_H
 #define MILESTONE_2_CLIENTHANDLER_H
 
@@ -17,14 +13,13 @@ class ClientHandler {
 
 protected:
     virtual int writeToClient(int clientFD, const char *message) {
-        send(clientFD , message , strlen(message) , 0 );
-        std::cout<<"Message sent\n"<<std::endl;
+        send(clientFD, message, strlen(message), 0);
+        std::cout << "Message sent\n" << std::endl;
         return 0;
     };
 
 public:
-    virtual void handleClient(istream is, ostream os) = 0;
-
+    virtual void handleClient(int clientFD, bool *isRunning) = 0;
 };
 
 #endif //MILESTONE_2_CLIENTHANDLER_H
