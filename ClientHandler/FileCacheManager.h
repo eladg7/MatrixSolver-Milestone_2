@@ -4,8 +4,9 @@
 #include "AbstractCacheManager.h"
 
 using namespace std;
+
 template<typename T>
-class FileCacheManager:public AbstractCacheManager<T> {
+class FileCacheManager : public AbstractCacheManager<T> {
 
 public:
     explicit FileCacheManager(int capacity) {
@@ -17,18 +18,18 @@ public:
     }
 
     void insert(const string &key, const T &obj, bool toWrite) {
-        AbstractCacheManager<T>::insert(key,obj);
+        AbstractCacheManager<T>::insert(key, obj);
         if (toWrite) {
             writeObjectToFile(obj, key);
         }
     }
 
     virtual T get(const string &key) {
-        T obj=NULL;
+        T obj = NULL;
         auto iter = this->mymap.find(key);
         if (iter != this->mymap.end()) {
             obj = iter->second;
-        }else{
+        } else {
             obj = readObjectFromFile(key);
         }
         insert(key, obj, false);
@@ -62,9 +63,7 @@ public:
 
         fileObj.open(cwd + this->className + "_" + key + ".bin", ios::binary | ios::in);
         if (!fileObj) {
-            strcpy(this->exceptionBuffer, "No object file in system: ");
-            strcat(this->exceptionBuffer, (this->className + " - " + key).c_str());
-            throw this->exceptionBuffer;
+            return NULL;
         }
         T obj;
         fileObj.read((char *) &obj, sizeof(obj));
@@ -76,7 +75,6 @@ public:
 
         return obj;
     }
-
 };
 
 

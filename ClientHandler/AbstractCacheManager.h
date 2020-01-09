@@ -7,8 +7,8 @@
 
 #include "CacheManager.h"
 
-template <typename T>
-class AbstractCacheManager:public CacheManager<T>{
+template<typename T>
+class AbstractCacheManager : public CacheManager<T> {
 protected:
     virtual void insert(const string &key, const T &obj) {
         // not present in cache
@@ -48,5 +48,10 @@ protected:
         }
     }
 
+public:
+    virtual bool keyExist(const string &key) {
+        return this->mymap.find(key);
+    }
 };
+
 #endif //MILESTONE_2_ABSTRACTCACHEMANAGER_H
