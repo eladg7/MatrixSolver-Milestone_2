@@ -1,14 +1,14 @@
-
 #ifndef MILESTONE_2_MYTESTCLIENTHANDLER_H
 #define MILESTONE_2_MYTESTCLIENTHANDLER_H
 
 
 #include "ClientHandler.h"
+#include "../StringUtils.h"
 
-#define BUFFER_SIZE 256
+#define BUFFER_SIZE 1024
 
 template<typename P, typename S>
-class MyTestClientHandler : public ClientHandler<P, S> {
+class MyTestClientHandler : public ClientHandler {
 private:
     Solver<P, S> *solver;
     CacheManager<S> *cm;
@@ -29,9 +29,11 @@ public:
             } else if (cm->keyExist(buffer)) {
                 solution = solver->toString(cm->get(buffer));
             } else {
-                string s = buffer;
-                solution = solver->toString(
-                        solver->solve(solver->createProblemFromString(s)));
+                vector<string> problems = StringUtils::split(buffer, '\n');
+                for (string s :problems) {
+                    solution = solver->toString(
+                            solver->solve(solver->createProblemFromString(s)));
+                }
             }
 
             this->writeToClient(clientFD, solution.c_str());

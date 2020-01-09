@@ -11,4 +11,5 @@ add_executable(Milestone_2 main.cpp
         Server/MySerialServer.h
         ClientHandler/FileCacheManager.h
         ClientHandler/MyTestClientHandler.h
-        ClientHandler/StringReverser.h)
+        ClientHandler/StringReverser.h
+        StringUtils.h)

@@ -8,15 +8,14 @@
 
 using namespace server_side;
 
-template<typename P, typename S>
-class MySerialServer : public TCPServer<P, S> {
+class MySerialServer : public TCPServer {
 private:
     queue<int> clientsSocketQueue{};
     vector<thread> threadsOfServer;
     mutex mutexServer;
 public:
-    virtual bool open(int port, ClientHandler<P, S> *c) {
-        if (!TCPServer<P, S>::open(port, c)) {
+    virtual bool open(int port, ClientHandler*c) {
+        if (!TCPServer::open(port, c)) {
             cerr << "Could not open server" << endl;
             return false;
         }
@@ -24,17 +23,27 @@ public:
 
     virtual void stop() {
         this->isRunning = false;
-        auto it=threadsOfServer.begin();
-        while(it != threadsOfServer.end()){//stop all threads of server.
+        auto it = threadsOfServer.begin();
+        while (it != threadsOfServer.end()) {//stop all threads of server.
             it->join();
             it++;
         }
         close(this->socketFD);
     }
 
+    virtual void joinThreads() {
+        auto it = threadsOfServer.begin();
+        while (it != threadsOfServer.end()) {
+            it->join();
+            it++;
+        }
+    }
+
     virtual void start() {
         thread acceptThread(acceptingClientThread, this);
+        acceptThread.detach();
         thread handleThread(handlingClientThread, this);
+        handleThread.detach();
         threadsOfServer.push_back(move(acceptThread));
         threadsOfServer.push_back(move(handleThread));
     }
@@ -42,7 +51,7 @@ public:
     static void acceptingClientThread(MySerialServer *server) {
         while (server->isRunning) {
             while (server->isRunning
-            && server->clientsSocketQueue.size() > MAX_CONNECTED) {
+                   && server->clientsSocketQueue.size() > MAX_CONNECTED) {
                 usleep(10000);
             }
             server->acceptClient();

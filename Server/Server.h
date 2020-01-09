@@ -4,18 +4,17 @@
 #include "../ClientHandler/ClientHandler.h"
 
 namespace server_side {
-    template<typename P, typename S>
     class Server {
     protected:
         bool isRunning = false;
 
-        ClientHandler<P, S> *clientHandler;
+        ClientHandler*clientHandler;
 
         int socketFD{};
 
         int port{};
     public:
-        virtual bool open(int port, ClientHandler<P, S> *c) = 0;
+        virtual bool open(int port, ClientHandler *c) = 0;
 
         virtual void stop() = 0;
 

@@ -8,11 +8,9 @@
 
 using namespace std;
 
-template<typename P, typename S>
 class ClientHandler {
-
 protected:
-    virtual int writeToClient(int clientFD, const char *message) {
+    static int writeToClient(int clientFD, const char *message) {
         send(clientFD, message, strlen(message), 0);
         std::cout << "Message sent\n" << std::endl;
         return 0;
