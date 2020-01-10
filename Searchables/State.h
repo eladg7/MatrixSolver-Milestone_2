@@ -9,17 +9,12 @@
 #include <cstring>
 
 using namespace std;
-enum color {
-    Unvisited, Visited, Examined
-};
 
 class State {
 private:
     string stateDescription;
     double cost;
     State *cameFrom;
-    color colorOfState = Unvisited;
-
 
 public:
     State(string state) {
@@ -37,11 +32,11 @@ public:
         return cameFrom;
     }
 
-    bool getColor() { return colorOfState; }
+    string getDescription() { return stateDescription; }
 
-    void markAsVisited() { colorOfState = Visited; }
+    double getCost() { return cost; }
 
-    void markAsExamined() { colorOfState = Examined; }
+    void setCost(double c) { this->cost = c; }
 
     bool operator>(const State &s1) {
 
