@@ -2,15 +2,14 @@
 #define MILESTONE_2_BESTFIRSTSEARCH_H
 
 #include "CustomPriorityQueue.h"
-#include "AbstractSearcher.h"
+#include "AbstractQueueSearchers.h"
 
 using namespace std;
 
-class BestFirstSearch : public AbstractSearcher {
+class BestFirstSearch : public AbstractQueueSearchers {
 
 public:
     virtual vector<State> search(Searchable *searchable);
-
 
 };
 

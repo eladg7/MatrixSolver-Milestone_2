@@ -7,14 +7,20 @@
 
 #include <string>
 #include <cstring>
+#include <cmath>
 
 using namespace std;
+
+enum color {
+    Unvisited, Visited, Examined
+};
 
 class State {
 private:
     string stateDescription;
-    double cost;
+    double cost=INFINITY;
     State *cameFrom;
+    color colorNode = Unvisited;
 
 public:
     State(string state) {
@@ -30,6 +36,16 @@ public:
 
     State *getFather() {
         return cameFrom;
+    }
+
+    color getColor() { return colorNode; }
+
+    void setVisited() {
+        colorNode = Visited;
+    }
+
+    void setExamined() {
+        colorNode = Examined;
     }
 
     string getDescription() { return stateDescription; }

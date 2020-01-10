@@ -7,6 +7,16 @@
 class Searcher {
 public:
    virtual vector<State> search(Searchable *searchable) = 0;
+    virtual int getNumberOfNodesEvaluated()=0;
+
+    vector<State> backTrace(State s) {
+        vector<State> backtrace;
+        while (s.getFather()) {
+            backtrace.insert(backtrace.begin(), s);
+            s = *(s.getFather());
+        }
+        return backtrace;
+    }
 };
 
 #endif //MILESTONE_2_SEARCHER_H
