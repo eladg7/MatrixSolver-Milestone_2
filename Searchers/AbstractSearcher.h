@@ -2,10 +2,14 @@
 #define MILESTONE_2_ABSTRACTSEARCHER_H
 
 #include "Searcher.h"
+#include "CustomPriorityQueue.h"
+
+using namespace std;
 
 class AbstractSearcher : public Searcher {
 protected:
-    CustomPriorityQueue<State> openStateList;
+    CustomPriorityQueue<State> openStateList{};
+
     vector<State> backTrace(State s);
 
 public:

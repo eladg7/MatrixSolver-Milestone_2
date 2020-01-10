@@ -30,16 +30,8 @@ public:
         return last;
     }
 
-    const_iterator getEnd() const {
-        return this->c.cend;
-    }
-
-    const_iterator getBegin() const {
-        return this->c.cbegin;
-    }
-
     bool contains(const T &val) const {
-        return find(val) != getEnd();
+        return find(val) != this->c.cend();
     }
 };
 
