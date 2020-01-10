@@ -21,8 +21,8 @@ protected:
             return -1;
         }
         //set timeout for receive operations
-        struct timeval tv;
-        __time_t timeout_in_seconds = 60*2;
+        struct timeval tv{};
+        __time_t timeout_in_seconds = 60;
         tv.tv_sec = timeout_in_seconds;
         tv.tv_usec = 0;
         setsockopt(this->socketFD, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv);

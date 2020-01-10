@@ -13,10 +13,9 @@ using namespace server_side;
 class MySerialServer : public TCPServer {
 private:
     queue<int> clientsSocketQueue{};
-    vector<thread> threadsOfServer;
     mutex mutexServer;
 public:
-    virtual bool open(int port, ClientHandler*c) {
+    virtual bool open(int port, ClientHandler *c) {
         if (!TCPServer::open(port, c)) {
             cerr << "Could not open server" << endl;
             return false;
@@ -34,6 +33,7 @@ public:
     }
 
     virtual void start() {
+        threadsOfServer.clear();
         thread acceptThread(acceptingClientThread, this);
         thread handleThread(handlingClientThread, this);
         threadsOfServer.push_back(move(acceptThread));
