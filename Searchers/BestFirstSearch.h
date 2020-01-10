@@ -3,12 +3,11 @@
 
 #include "Searcher.h"
 
-template <typename P,typename S>
-class BestFirstSearch:public Searcher<P,S> {
+class BestFirstSearch:public Searcher {
 
 
 public:
-    virtual S search(Searchable searchable);
+    virtual string search(Searchable *searchable);
 };
 
 
