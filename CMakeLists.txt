@@ -12,4 +12,7 @@ add_executable(Milestone_2 main.cpp
         ClientHandler/FileCacheManager.h
         ClientHandler/MyTestClientHandler.h
         ClientHandler/StringReverser.h
-        StringUtils.h)
+        StringUtils.h
+        Searchables/Searchable.h Searchables/State.h Searchables/State.cpp
+        Searchers/Searcher.h Searchers/BestFirstSearch.cpp Searchers/BestFirstSearch.h
+        Searchers/CustomPriorityQueue.h)

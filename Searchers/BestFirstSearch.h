@@ -2,12 +2,17 @@
 #define MILESTONE_2_BESTFIRSTSEARCH_H
 
 #include "Searcher.h"
+#include "CustomPriorityQueue.h"
 
-class BestFirstSearch:public Searcher {
-
-
+using namespace std;
+class BestFirstSearch : public Searcher {
+    CustomPriorityQueue<State> openStateList;
+    vector<State> backTrace(State s);
 public:
-    virtual string search(Searchable *searchable);
+    virtual vector<State> search(Searchable *searchable);
+
+    State popFromOpenQueue();
+    void addToOpenQueue(State s);
 };
 
 
