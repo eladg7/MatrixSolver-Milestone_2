@@ -15,4 +15,5 @@ add_executable(Milestone_2 main.cpp
         StringUtils.h
         Searchables/Searchable.h Searchables/State.h Searchables/State.cpp
         Searchers/Searcher.h Searchers/BestFirstSearch.cpp Searchers/BestFirstSearch.h
-        Searchers/CustomPriorityQueue.h)
+        Searchers/CustomPriorityQueue.h
+        Searchers/AbstractSearcher.h Searchers/AbstractSearcher.cpp)
