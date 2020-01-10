@@ -15,8 +15,6 @@ private:
     void runningAcceptClientThread();
 
 public:
-    bool open(int port, ClientHandler *c) override;
-
     void start() override;
 
     virtual int acceptClient();

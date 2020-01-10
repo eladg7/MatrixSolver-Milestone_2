@@ -1,13 +1,6 @@
 
 #include "MySerialServer.h"
 
-bool MySerialServer::open(int port, ClientHandler *c) {
-    if (!TCPServer::open(port, c)) {
-        cerr << "Could not open server" << endl;
-        return false;
-    }
-}
-
 void MySerialServer::start() {
     threadsOfServer.clear();
     thread acceptThread(acceptingClientThread, this);
