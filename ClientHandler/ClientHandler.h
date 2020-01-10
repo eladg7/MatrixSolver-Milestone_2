@@ -11,8 +11,14 @@ using namespace std;
 class ClientHandler {
 protected:
     static int writeToClient(int clientFD, const char *message) {
-        send(clientFD, message, strlen(message), 0);
-        std::cout << "Message sent\n" << std::endl;
+        char copy[strlen(message) + 2];
+        strcpy(copy, message);
+        if (message[strlen(message) - 1] != '\n') {
+            strcat(copy, "\r\n");
+        }
+
+        send(clientFD, copy, strlen(copy), 0);
+        cout << "Message sent" << endl;
         return 0;
     };
 

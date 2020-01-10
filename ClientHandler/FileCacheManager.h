@@ -79,19 +79,17 @@ public:
 
     virtual bool keyExist(const string &key) {
         bool isExist = false;
-        string fileName= this->className + "_" + key + ".bin";
+        string fileName = this->className + "_" + key + ".bin";
         auto iter = this->mymap.find(key);
-        if (iter != this->mymap.end()) {
+        if (iter != this->mymap.end() || fexists(fileName.c_str())) {
             isExist = true;
-        }else if(fexists(fileName.c_str())){
-            isExist=true;
         }
         return isExist;
     }
 
     bool fexists(const char *filename) {
         std::ifstream ifile(filename);
-        return (bool)ifile;
+        return (bool) ifile;
     }
 };
 

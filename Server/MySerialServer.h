@@ -12,7 +12,10 @@ class MySerialServer : public TCPServer {
 private:
     queue<int> clientsSocketQueue{};
     mutex mutexSerialServer;
+
     void runningAcceptClientThread();
+
+    void closeClientSocket();
 
 public:
     void start() override;
@@ -30,6 +33,6 @@ public:
     void pushToClientQueue(int clientSocket);
 
 
-    };
+};
 
 #endif //MILESTONE_2_MYSERIALSERVER_H

@@ -13,9 +13,9 @@ private:
     Solver<P, S> *solver;
     CacheManager<S> *cm;
 public:
-    MyTestClientHandler(Solver<P,S> *s,CacheManager<S> *cache){
-        solver=s;
-        cm=cache;
+    MyTestClientHandler(Solver<P, S> *s, CacheManager<S> *cache) {
+        solver = s;
+        cm = cache;
     }
 
     virtual void handleClient(int clientFD, bool *isRunning) {
@@ -29,9 +29,15 @@ public:
                 cerr << "Couldn't read for client." << endl;
                 break;
             }
-            buffer[strlen(buffer) - 2] = '\0';
-            string key=buffer;
-            if (key== "end") {
+            
+            if (buffer[strlen(buffer) - 2] == '\r') {
+                buffer[strlen(buffer) - 2] = '\0';
+            } else if (buffer[strlen(buffer) - 1] == '\n') {
+                buffer[strlen(buffer) - 1] = '\0';
+            }
+
+            string key = buffer;
+            if (key == "end") {
                 break;
             }
 
@@ -46,10 +52,9 @@ public:
             }
 
             this->writeToClient(clientFD, solution.c_str());
+            memset(buffer, 0, sizeof buffer);
         }
-
     }
-
 };
 
 

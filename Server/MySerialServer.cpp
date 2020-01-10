@@ -58,9 +58,17 @@ void MySerialServer::runningAcceptClientThread() {
         if (result < 0) {
             break;
         }
+
         clientHandler->handleClient(getClientFD(), &isRunning);
+        closeClientSocket();
         popClientFromQueue();
         usleep(5000);
-
     }
+}
+
+void MySerialServer::closeClientSocket() {
+    mutexSerialServer.lock();
+    int clientSocket = clientsSocketQueue.front();
+    mutexSerialServer.unlock();
+    close(clientSocket);
 }
