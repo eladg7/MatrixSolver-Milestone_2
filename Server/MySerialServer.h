@@ -35,43 +35,44 @@ public:
     virtual void start() {
         threadsOfServer.clear();
         thread acceptThread(acceptingClientThread, this);
-        thread handleThread(handlingClientThread, this);
+//        thread handleThread(handlingClientThread, this);
         threadsOfServer.push_back(move(acceptThread));
-        threadsOfServer.push_back(move(handleThread));
+//        threadsOfServer.push_back(move(handleThread));
     }
 
     static void acceptingClientThread(MySerialServer *server) {
         while (server->isRunning) {
-            while (server->isRunning
-                   && server->clientsSocketQueue.size() > MAX_CONNECTED) {
-                usleep(10000);
-            }
-            int succeed= server->acceptClient();
-            if(succeed <0){
+            int result = server->acceptClient();
+            if (result < 0) {
                 break;
             }
-            usleep(5000);
-        }
-    }
-
-    static void handlingClientThread(MySerialServer *server) {
-        while (server->isRunning) {
             server->clientHandler->handleClient(
                     server->clientsSocketQueue.front(), &server->isRunning);
             server->mutexServer.lock();
             server->clientsSocketQueue.pop();
             server->mutexServer.unlock();
-
             usleep(5000);
         }
     }
+
+//    static void handlingClientThread(MySerialServer *server) {
+//        while (server->isRunning) {
+//            server->clientHandler->handleClient(
+//                    server->clientsSocketQueue.front(), &server->isRunning);
+//            server->mutexServer.lock();
+//            server->clientsSocketQueue.pop();
+//            server->mutexServer.unlock();
+//
+//            usleep(5000);
+//        }
+//    }
 
     virtual int acceptClient() {
         if (this->clientsSocketQueue.size() < MAX_CONNECTED) {
             int clientSocket = accept(this->socketFD, (struct sockaddr *) &this->address,
                                       (socklen_t *) &this->address);
             if (clientSocket < 0) {
-                cerr << "Cannot accept connection of client"  << endl;
+                cerr << "Cannot accept connection of client" << endl;
                 stop();
                 return -2;
             }
@@ -84,7 +85,7 @@ public:
             return 0;
         }
 
-        return -1;
+        return 1;
     }
 };
 
