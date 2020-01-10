@@ -29,6 +29,7 @@ public:
 
     static void acceptingClientThread(MySerialServer *server);
 
+    void pushToClientQueue(int clientSocket);
 
 
     };

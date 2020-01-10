@@ -26,9 +26,7 @@ int MySerialServer::acceptClient() {
         }
 
         cout << "Connection successful" << endl;
-        mutexSerialServer.lock();
-        this->clientsSocketQueue.push(clientSocket);
-        mutexSerialServer.unlock();
+        pushToClientQueue(clientSocket);
 
         return 0;
     }
@@ -36,6 +34,11 @@ int MySerialServer::acceptClient() {
     return 1;
 }
 
+void MySerialServer::pushToClientQueue(int clientSocket) {
+    mutexSerialServer.lock();
+    this->clientsSocketQueue.push(clientSocket);
+    mutexSerialServer.unlock();
+}
 
 void MySerialServer::popClientFromQueue() {
     mutexSerialServer.lock();
