@@ -43,29 +43,24 @@ public:
 
     void markAsExamined() { colorOfState = Examined; }
 
-    bool operator>(const State &s1) {
-
-        return cost > s1.cost;
+    friend bool operator>(const State &s1, const State &s2) {
+        return s1.cost > s2.cost;
     }
 
-    bool operator>=(const State &s1) {
-
-        return cost >= s1.cost;
+    friend bool operator>=(const State &s1, const State &s2) {
+        return s1.cost >= s2.cost;
     }
 
-    bool operator<(const State &s1) {
-
-        return cost < s1.cost;
+    friend bool operator<(const State &s1, const State &s2) {
+        return s1.cost < s2.cost;
     }
 
-    bool operator<=(const State &s1) {
-
-        return cost <= s1.cost;
+    friend bool operator<=(const State &s1, const State &s2) {
+        return s1.cost <= s2.cost;
     }
 
-    bool operator==(const State &s1) {
-
-        return stateDescription == s1.stateDescription;
+    friend bool operator==(const State &s1, const State &s2) {
+        return s1.stateDescription == s2.stateDescription;
     }
 
 };

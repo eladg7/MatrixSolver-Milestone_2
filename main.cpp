@@ -5,8 +5,9 @@
 int main() {
     MySerialServer s;
     MyTestClientHandler<string, string> handler;
-    s.open(4200, &handler);
-    s.start();
-    s.joinThreads();
+    if (s.open(5600, &handler)) {
+        s.start();
+        s.joinThreads();
+    }
     return 0;
 }

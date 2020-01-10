@@ -6,8 +6,7 @@
 
 class Searcher {
 public:
-   virtual vector<State> search(Searchable searchable) = 0;
-
+   virtual vector<State> search(Searchable *searchable) = 0;
 };
 
 #endif //MILESTONE_2_SEARCHER_H
