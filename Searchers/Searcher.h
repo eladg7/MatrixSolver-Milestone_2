@@ -3,10 +3,10 @@
 
 #include "../Searchables/Searchable.h"
 
-template<typename P, typename S>
+
 class Searcher {
 public:
-   virtual S search(Searchable searchable) = 0;
+   virtual string search(Searchable searchable) = 0;
 
 };
 

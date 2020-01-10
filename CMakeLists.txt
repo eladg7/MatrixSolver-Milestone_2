@@ -4,11 +4,11 @@ project(Milestone_2)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS -pthread)
 add_executable(Milestone_2 main.cpp
-        Server/Server.h
+        Server/Server.h Server/TCPServer.h
         ClientHandler/ClientHandler.h ClientHandler/AbstractCacheManager.h
         ClientHandler/Solver.h
         ClientHandler/CacheManager.h
-        Server/MySerialServer.h
+        Server/MySerialServer.h Server/MySerialServer.cpp
         ClientHandler/FileCacheManager.h
         ClientHandler/MyTestClientHandler.h
         ClientHandler/StringReverser.h
