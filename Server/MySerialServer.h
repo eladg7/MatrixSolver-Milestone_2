@@ -4,6 +4,8 @@
 #include <queue>
 #include <thread>
 #include <mutex>
+#include <algorithm>
+#include <functional>
 #include "TCPServer.h"
 
 using namespace server_side;
@@ -23,6 +25,11 @@ public:
     virtual void stop() {
         this->isRunning = false;
         close(this->socketFD);
+    }
+
+    virtual void joinThreads() {
+        std::for_each(threadsOfServer.begin(),threadsOfServer.end(),
+                std::mem_fn(&std::thread::join));
     }
 
     virtual void start() {
