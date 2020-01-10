@@ -24,7 +24,7 @@ public:
                 cerr << "Couldn't read for client." << endl;
                 break;
             }
-            if (strcmp(buffer, "end") == 0) {
+            if (strcmp(buffer, "end\r\n") == 0) {
                 break;
             } else if (cm->keyExist(buffer)) {
                 solution = solver->toString(cm->get(buffer));

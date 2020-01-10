@@ -9,9 +9,10 @@ void MySerialServer::start() {
 
 int MySerialServer::acceptClient() {
     if (this->clientsSocketQueue.size() < MAX_CONNECTED) {
+        int len=sizeof(this->address);
         int clientSocket = accept(this->socketFD,
                                   (struct sockaddr *) &this->address,
-                                  (socklen_t *) &this->address);
+                                  (socklen_t *) &len);
         if (clientSocket < 0) {
             cerr << "Cannot accept connection of client" << endl;
             stop();
