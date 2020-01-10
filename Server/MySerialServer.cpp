@@ -9,7 +9,7 @@ void MySerialServer::start() {
 
 int MySerialServer::acceptClient() {
     if (this->clientsSocketQueue.size() < MAX_CONNECTED) {
-        int len=sizeof(this->address);
+        int len = sizeof(this->address);
         int clientSocket = accept(this->socketFD,
                                   (struct sockaddr *) &this->address,
                                   (socklen_t *) &len);

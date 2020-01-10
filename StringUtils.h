@@ -32,6 +32,28 @@ public:
     static string &trim(string &str, const string &chars) {
         return ltrim(rtrim(str, chars), chars);
     }
+
+    static void eraseAllSubStr(std::string &mainStr, const std::string &toErase) {
+        size_t pos = std::string::npos;
+
+        // Search for the substring in string in a loop untill nothing is found
+        while ((pos = mainStr.find(toErase)) != std::string::npos) {
+            // If found then erase it from string
+            mainStr.erase(pos, toErase.length());
+        }
+    }
+
+    static bool isCharInString(const string &str, char c) {
+        return (strchr(str.c_str(), c));
+    }
+
+    static vector<string> splitByFirstChar(const string &str, char c) {
+        // split string by first char
+        vector<string> newVector;
+        newVector.push_back(str.substr(0, str.find(c)));
+        newVector.push_back(str.substr(str.find(c) + 1, str.length()));
+        return newVector;
+    }
 };
 
 #endif //MILESTONE_2_STRINGUTILS_H
