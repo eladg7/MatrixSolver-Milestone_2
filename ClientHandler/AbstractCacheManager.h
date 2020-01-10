@@ -10,6 +10,12 @@
 template<typename T>
 class AbstractCacheManager : public CacheManager<T> {
 protected:
+    int sizeCacheList{};
+    list<string> refrenceList;
+    unordered_map<std::string, T> mymap;
+    const string className = typeid(T).name();
+    char exceptionBuffer[64] = {0};
+
     virtual void insert(const string &key, const T &obj) {
         // not present in cache
         if (this->mymap.find(key) == this->mymap.end()) {

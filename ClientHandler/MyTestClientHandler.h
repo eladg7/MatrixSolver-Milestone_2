@@ -13,6 +13,11 @@ private:
     Solver<P, S> *solver;
     CacheManager<S> *cm;
 public:
+    MyTestClientHandler(Solver<P,S> *s,CacheManager<S> *cache){
+        solver=s;
+        cm=cache;
+    }
+
     virtual void handleClient(int clientFD, bool *isRunning) {
         char buffer[BUFFER_SIZE] = {0};
         int isRead = 0;
@@ -24,12 +29,16 @@ public:
                 cerr << "Couldn't read for client." << endl;
                 break;
             }
-            if (strcmp(buffer, "end\r\n") == 0) {
+            buffer[strlen(buffer) - 2] = '\0';
+            string key=buffer;
+            if (key== "end") {
                 break;
-            } else if (cm->keyExist(buffer)) {
-                solution = solver->toString(cm->get(buffer));
+            }
+
+            if (cm->keyExist(key)) {
+                solution = solver->toString(cm->get(key));
             } else {
-                vector<string> problems = StringUtils::split(buffer, '\n');
+                vector<string> problems = StringUtils::split(key, '\n');
                 for (string s :problems) {
                     solution = solver->toString(
                             solver->solve(solver->createProblemFromString(s)));
