@@ -22,12 +22,14 @@ public:
 
     virtual string createProblemFromString(const string &str);
 
-    virtual string toString(string solution) = 0;
+    virtual string toString(string solution);
 
-    virtual string solve(string problem) {
+    virtual string solve(string problem);
 
+    ~MatrixSolver() {
+        delete searchable;
+    }
 
-    };
 
 };
 
