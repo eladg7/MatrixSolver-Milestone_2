@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Server/MySerialServer.h"
 #include "ClientHandler/MyTestClientHandler.h"
-#include "ClientHandler/StringReverser.h"
+#include "Solvers/StringReverser.h"
 #include "ClientHandler/FileCacheManager.h"
 
 int main() {

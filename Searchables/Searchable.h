@@ -12,13 +12,14 @@ class Searchable {
 
 
 public:
-    virtual State getInitialState() = 0;
+    virtual State* getInitialState() = 0;
 
     virtual State getGoalState() = 0;
 
-    virtual vector<State> getAllPossibleStates(State s) = 0;
+    virtual vector<State*> getAllPossibleStates(State &s) = 0;
 
-    virtual double getEdgeCost(State s1, State s2) = 0;
+    virtual double getCostToGetToNode(const State &s) = 0;
+
 };
 
 #endif //MILESTONE_2_SEARCHABLE_H

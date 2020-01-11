@@ -11,20 +11,22 @@
 
 using namespace std;
 
-enum color {
-    Unvisited, Visited, Examined
-};
-
 class State {
 private:
     string stateDescription;
-    double cost=INFINITY;
+    double cost = INFINITY;
     State *cameFrom;
-    color colorNode = Unvisited;
 
 public:
-    State(string state) {
+    State() { cameFrom = nullptr; }
+
+    void init(string state) {
         stateDescription = state;
+    }
+
+    State(const State &s) {
+        stateDescription = s.getDescription();
+        cost = s.getCurrentCost();
         cameFrom = nullptr;
     }
 
@@ -38,19 +40,10 @@ public:
         return cameFrom;
     }
 
-    color getColor() { return colorNode; }
 
-    void setVisited() {
-        colorNode = Visited;
-    }
+    string getDescription() const { return stateDescription; }
 
-    void setExamined() {
-        colorNode = Examined;
-    }
-
-    string getDescription() { return stateDescription; }
-
-    double getCost() { return cost; }
+    double getCurrentCost() const { return cost; }
 
     void setCost(double c) { this->cost = c; }
 

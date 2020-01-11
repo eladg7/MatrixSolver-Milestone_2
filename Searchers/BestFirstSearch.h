@@ -9,7 +9,7 @@ using namespace std;
 class BestFirstSearch : public AbstractQueueSearchers {
 
 public:
-    virtual vector<State> search(Searchable *searchable);
+    virtual vector<State*> search(Searchable *searchable);
 
 };
 
