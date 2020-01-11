@@ -12,47 +12,55 @@ class MyTestClientHandler : public ClientHandler {
 private:
     Solver<P, S> *solver;
     CacheManager<S> *cm;
+
 public:
     MyTestClientHandler(Solver<P, S> *s, CacheManager<S> *cache) {
         solver = s;
         cm = cache;
     }
 
+    vector<string> getSolutionFromKey(string &key) {
+        vector<string> solution;
+        if (cm->keyExist(key)) {
+            solution.push_back(solver->toString(cm->get(key)));
+        } else {
+//            StringUtils::eraseAllSubStr(key, "\r");
+            solution.push_back(solver->toString(
+                    solver->solve(solver->createProblemFromString(key))));
+
+        }
+        return solution;
+    }
+
     virtual void handleClient(int clientFD, bool *isRunning) {
-        char buffer[BUFFER_SIZE] = {0};
+        char buffer[4 * BUFFER_SIZE] = {0};
+        char tempBuffer[BUFFER_SIZE] = {0};
         int isRead = 0;
-        string solution;
+        vector<string> solution;
 
         while (*isRunning) {
-            isRead = read(clientFD, buffer, sizeof(buffer));
+            isRead = read(clientFD, tempBuffer, sizeof(buffer));
             if (isRead <= 0) {//error getting info from client.
-                cerr << "Couldn't read for client." << endl;
+                cerr << "Couldn't read from client." << endl;
                 break;
             }
-            
-            if (buffer[strlen(buffer) - 2] == '\r') {
-                buffer[strlen(buffer) - 2] = '\0';
-            } else if (buffer[strlen(buffer) - 1] == '\n') {
-                buffer[strlen(buffer) - 1] = '\0';
-            }
-
-            string key = buffer;
-            if (key == "end") {
+            ClientHandler::rnInTheEnd(tempBuffer);
+            string tempStrBuffer = tempBuffer;
+            if (StringUtils::endsWith(tempStrBuffer, "end")) {
+                string key = buffer +
+                             tempStrBuffer.substr(
+                                     0, tempStrBuffer.length() - 5);//\r\nend
+                solution = getSolutionFromKey(key);
+                this->writeToClient(clientFD, solution);
+                memset(buffer, 0, sizeof buffer);
                 break;
             }
 
-            if (cm->keyExist(key)) {
-                solution = solver->toString(cm->get(key));
-            } else {
-                vector<string> problems = StringUtils::split(key, '\n');
-                for (string s :problems) {
-                    solution = solver->toString(
-                            solver->solve(solver->createProblemFromString(s)));
-                }
-            }
+            strcat(buffer, tempBuffer);
+            strcat(buffer, "/n");
+            memset(tempBuffer, 0, sizeof tempBuffer);
 
-            this->writeToClient(clientFD, solution.c_str());
-            memset(buffer, 0, sizeof buffer);
+
         }
     }
 };

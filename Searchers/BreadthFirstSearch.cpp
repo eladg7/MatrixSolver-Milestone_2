@@ -1,23 +1,23 @@
 #include "BreadthFirstSearch.h"
 
-vector<State> BreadthFirstSearch::search(Searchable *searchable) {
-    State initial = searchable->getInitialState();
-    initial.setCost(0);
+vector<State*> BreadthFirstSearch::search(Searchable *searchable) {
+    State *initial = searchable->getInitialState();
+    initial->setCost(searchable->getCostToGetToNode(*initial));
     addToQueue(initial);
     State goalState = searchable->getGoalState();
     while (!openStateList.empty()) {
-        State n = popFromQueue();
+        State* n = popFromQueue();
         this->numberOfNodes++;
 
-        if (n == goalState) {
+        if (*n == goalState) {
             return Searcher::backTrace(n);
         }
-        vector<State> succerssors = searchable->getAllPossibleStates(n);
-        for (State &s:succerssors) {
-            if (s.getCost() >
-                n.getCost() + searchable->getEdgeCost(s, n)) {
+        vector<State*> succerssors = searchable->getAllPossibleStates(*n);
+        for (State *s:succerssors) {
+            if (s->getCurrentCost() >
+                    n->getCurrentCost() + searchable->getCostToGetToNode(*s)) {
                 removeFromQueue(s);
-                s.setCost(n.getCost() + searchable->getEdgeCost(s, n));
+                s->setCost(n->getCurrentCost() + searchable->getCostToGetToNode(*s));
                 addToQueue(s);
             }
         }

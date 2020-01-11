@@ -61,6 +61,7 @@ void MySerialServer::runningAcceptClientThread() {
 
         clientHandler->handleClient(getClientFD(), &isRunning);
         closeClientSocket();
+        cout <<"Closed client socket."<<endl;
         popClientFromQueue();
         usleep(5000);
     }

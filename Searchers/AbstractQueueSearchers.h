@@ -8,14 +8,14 @@ using namespace std;
 
 class AbstractQueueSearchers : public Searcher {
 protected:
-    CustomPriorityQueue<State> openStateList{};
+    CustomPriorityQueue<State*> openStateList{};
     int numberOfNodes = 0;
 
-    State popFromQueue();
+    State* popFromQueue();
 
-    void addToQueue(State s);
+    void addToQueue(State *s);
 
-    void removeFromQueue(State s);
+    void removeFromQueue(State *s);
 
 public:
     virtual int getNumberOfNodesEvaluated() {

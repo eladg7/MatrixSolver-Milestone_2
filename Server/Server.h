@@ -24,6 +24,7 @@ namespace server_side {
         virtual void stop() {
             this->isRunning = false;
             close(this->socketFD);
+            cout <<"Closed server socket."<<endl;
         }
 
         virtual bool isServerRunning() {
