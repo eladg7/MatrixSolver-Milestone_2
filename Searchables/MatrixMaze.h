@@ -35,7 +35,7 @@ public:
 
     virtual State getGoalState() { return goal; }
 
-    virtual vector<State *> getAllPossibleStates(State * s) {
+    virtual vector<State *> getAllPossibleStates(State *s) {
         vector<State *> succesors;
         vector<int> place = getPlacementOfNodeInMatrix(s);
         int i = place.at(0);
@@ -56,7 +56,7 @@ public:
         return succesors;
     }
 
-    State *createSuccesorState(State * s, int i, int j) {
+    State *createSuccesorState(State *s, int i, int j) {
         string place = to_string(i) + ',' + to_string(j);
         State *newState = new State(place, s);
         return newState;
