@@ -26,6 +26,7 @@ public:
         } else {
             StringUtils::eraseAllSubStr(key, "\r");
             solution = solver->toString(solver->solve(key));
+            // todo cm->insert(solution); dont know how to represent matrix in key.
         }
         return solution;
     }
@@ -45,9 +46,9 @@ public:
             ClientHandler::rnInTheEnd(tempBuffer);
             string tempStrBuffer = tempBuffer;
             if (StringUtils::endsWith(tempStrBuffer, "end")) {
-                string key = buffer +
-                             tempStrBuffer.substr(
-                                     0, tempStrBuffer.length() - 5);//\r\nend
+                string key = (buffer + tempStrBuffer+"\r");//added /r tp erase this specific
+                StringUtils::eraseAllSubStr(key, "\nend\r");
+
                 solution = getSolutionFromKey(key);
                 this->writeToClient(clientFD, solution);
                 memset(buffer, 0, sizeof buffer);

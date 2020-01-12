@@ -36,6 +36,8 @@ public:
         this->cameFrom = camefrom;
     }
 
+    void setCameFrom(State *s) { cameFrom = s; }
+
     State *getFather() {
         return cameFrom;
     }

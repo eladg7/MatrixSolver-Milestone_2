@@ -9,7 +9,7 @@ void MatrixSolver::createProblemFromString(const string &str) {
     State initial;
     initial.init(matrix.back());
     matrix.pop_back();
-    int M = (StringUtils::split(matrix.front(),',')).size();
+    int M = (StringUtils::split(matrix.front(), ',')).size();
     int N = matrix.size();
 
     auto **mat = new double *[N];
@@ -20,7 +20,8 @@ void MatrixSolver::createProblemFromString(const string &str) {
         for (int j = 0; j < M; j++) {
             string doub = StringUtils::trim(nodes.front());
             mat[i][j] = stod(doub);
-            nodes.erase(nodes.begin());
+            auto it = nodes.begin();
+            nodes.erase(it);
         }
     }
 
@@ -32,6 +33,9 @@ string MatrixSolver::solve(const string &problem) {
     createProblemFromString(problem);
     vector<State *> backtrace = searcher->search(searchable);
     for (State *s:backtrace) {
+        if (*s == *searchable->getInitialState()) {
+            continue;
+        }
         solution += searchable->getDirection(s) + " (" +
                     to_string(s->getCurrentCost()) + "), ";
     }
