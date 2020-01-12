@@ -18,9 +18,21 @@ public:
     }
 
     virtual string solve(string str) {
-        string copy = str;
-        reverse(copy.begin(), copy.end());
-        return copy;
+        vector<string> splittedProblems = StringUtils::split(str, "/n");
+        string result{};
+        if (!splittedProblems.empty()) {
+            unsigned int problemsCount = splittedProblems.size();
+            for (int i = 0; i < problemsCount; i++) {
+                reverse(splittedProblems.at(i).begin(), splittedProblems.at(i).end());
+                result.append(splittedProblems.at(i));
+                //  add \r\n only if it's not the last word
+                if (i != problemsCount - 1) {
+                    result.append("\r\n");
+                }
+            }
+        }
+
+        return result;
     }
 };
 

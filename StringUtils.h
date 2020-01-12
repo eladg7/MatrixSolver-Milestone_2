@@ -10,9 +10,8 @@ using namespace std;
 class StringUtils {
 public:
 
-    static bool endsWith(const std::string& str, const std::string& suffix)
-    {
-        return str.size() >= suffix.size() && 0 == str.compare(str.size()-suffix.size(), suffix.size(), suffix);
+    static bool endsWith(const std::string &str, const std::string &suffix) {
+        return str.size() >= suffix.size() && 0 == str.compare(str.size() - suffix.size(), suffix.size(), suffix);
     }
 
     static vector<string> split(const basic_string<char> &s, char delimiter) {
@@ -23,6 +22,22 @@ public:
             tokens.push_back(token);
         }
         return tokens;
+    }
+
+    static vector<string> split(const string &s, string delimiter) {
+        vector<string> result{};
+        if (!s.empty()) {
+            string copy = s;
+            size_t pos = 0;
+            string token;
+            while ((pos = copy.find(delimiter)) != string::npos) {
+                token = copy.substr(0, pos);
+                result.push_back(token);
+                copy.erase(0, pos + delimiter.length());
+            }
+        }
+
+        return result;
     }
 
     static string &ltrim(string &str, const string &chars = "\t\n\v\f\r ") {
