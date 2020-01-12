@@ -58,8 +58,6 @@ public:
             strcat(buffer, tempBuffer);
             strcat(buffer, "\n");
             memset(tempBuffer, 0, sizeof tempBuffer);
-
-
         }
     }
 };
