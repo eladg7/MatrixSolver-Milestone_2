@@ -70,6 +70,9 @@ public:
         return s1.stateDescription == s2.stateDescription;
     }
 
+    friend bool operator!=(const State &s1, const State &s2) {
+        return s1.stateDescription != s2.stateDescription;
+    }
 };
 
 

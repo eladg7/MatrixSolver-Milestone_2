@@ -17,4 +17,6 @@ add_executable(Milestone_2 main.cpp
         Searchers/AbstractQueueSearchers.h Searchers/AbstractQueueSearchers.cpp
         Searchers/BreadthFirstSearch.cpp Searchers/BreadthFirstSearch.h
         Searchers/DepthFirstSearch.cpp Searchers/DepthFirstSearch.h
-        Solvers/MatrixSolver.cpp Solvers/MatrixSolver.h Searchables/MatrixMaze.h)
+        Solvers/MatrixSolver.h Solvers/MatrixSolver.cpp
+        Searchers/Astar.h Searchers/Astar.cpp)
+
