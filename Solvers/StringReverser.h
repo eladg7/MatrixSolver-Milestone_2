@@ -15,8 +15,8 @@ public:
         return solution;
     }
 
-    virtual string solve(string str) {
-        vector<string> splittedProblems = StringUtils::split(str, "/n");
+    virtual string solve(const string& str) {
+        vector<string> splittedProblems = StringUtils::split(str, '\n');
         string result{};
         if (!splittedProblems.empty()) {
             unsigned int problemsCount = splittedProblems.size();
