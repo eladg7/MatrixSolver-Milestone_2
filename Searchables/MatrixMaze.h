@@ -18,14 +18,14 @@ private:
     vector<State *> allStates;
 
 public:
-    MatrixMaze(double *mat[], int N, int M, State &ini, State g) {
+    MatrixMaze(double **mat, int N, int M, State &ini, State g) {
         sizeCol = M;
         sizeRow = N;
-        matrix = new double *[sizeRow];
-        for (int i = 0; i < sizeRow; i++) {
-            matrix[i] = new double[sizeCol];
-            memcpy(matrix[i], mat[i], sizeof(double) * sizeCol);
-        }
+        matrix = mat;
+//        for (int i = 0; i < N; i++) {
+//            matrix[i] = new double[M];
+//            memcpy(matrix[i], mat[i], sizeof(double) * M);
+//        }
         initial = new State(ini);
         allStates.push_back(initial);
         goal = g;
@@ -41,16 +41,16 @@ public:
         int i = place.at(0);
         int j = place.at(1);
 
-        if (matrix[i + 1][j] != INFINITY) {
+        if (i < sizeRow - 1 && matrix[i + 1][j] != -1) {
             succesors.push_back(createSuccesorState(s, i + 1, j));
         }
-        if (matrix[i - 1][j] != INFINITY) {
+        if (i > 0 && matrix[i - 1][j] != -1) {
             succesors.push_back(createSuccesorState(s, i - 1, j));
         }
-        if (matrix[i][j + 1] != INFINITY) {
+        if (j < sizeCol - 1 && matrix[i][j + 1] != -1) {
             succesors.push_back(createSuccesorState(s, i, j + 1));
         }
-        if (matrix[i][j - 1] != INFINITY) {
+        if (j > 0 && matrix[i][j - 1] != -1) {
             succesors.push_back(createSuccesorState(s, i, j - 1));
         }
         return succesors;
@@ -59,8 +59,30 @@ public:
     State *createSuccesorState(State *s, int i, int j) {
         string place = to_string(i) + ',' + to_string(j);
         State *newState = new State(place, s);
+        allStates.push_back(newState);
         return newState;
     }
+
+    string getDirection(State *s) {
+        string direction;
+        vector<int> place = getPlacementOfNodeInMatrix(s);
+        vector<int> dadsPlace = getPlacementOfNodeInMatrix(s->getFather());
+        if (place.at(0) == dadsPlace.at(0)) {//same row
+            if (place.at(1) + 1 == dadsPlace.at(1)) {
+                direction = "Right";
+            } else {
+                direction = "Left";
+            }
+        } else {//same col
+            if (place.at(0) + 1 == dadsPlace.at(0)) {
+                direction = "Down";
+            } else {
+                direction = "Up";
+            }
+        }
+        return direction;
+    }
+
 
     virtual double getCostToGetToNode(State *s) {
         vector<int> placement = getPlacementOfNodeInMatrix(s);

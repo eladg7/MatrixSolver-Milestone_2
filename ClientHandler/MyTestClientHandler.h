@@ -19,24 +19,22 @@ public:
         cm = cache;
     }
 
-    vector<string> getSolutionFromKey(string &key) {
-        vector<string> solution;
+    string getSolutionFromKey(string &key) {
+        string solution;
         if (cm->keyExist(key)) {
-            solution.push_back(solver->toString(cm->get(key)));
+            solution = solver->toString(cm->get(key));
         } else {
-//            StringUtils::eraseAllSubStr(key, "\r");
-            solution.push_back(solver->toString(
-                    solver->solve(solver->createProblemFromString(key))));
-
+            StringUtils::eraseAllSubStr(key, "\r");
+            solution = solver->toString(solver->solve(key));
         }
         return solution;
     }
 
     virtual void handleClient(int clientFD, bool *isRunning) {
-        char buffer[4 * BUFFER_SIZE] = {0};
+        char buffer[8 * BUFFER_SIZE] = {0};
         char tempBuffer[BUFFER_SIZE] = {0};
         int isRead = 0;
-        vector<string> solution;
+        string solution;
 
         while (*isRunning) {
             isRead = read(clientFD, tempBuffer, sizeof(buffer));
@@ -57,7 +55,7 @@ public:
             }
 
             strcat(buffer, tempBuffer);
-            strcat(buffer, "/n");
+            strcat(buffer, "\n");
             memset(tempBuffer, 0, sizeof tempBuffer);
 
 
