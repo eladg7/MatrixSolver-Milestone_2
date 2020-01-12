@@ -18,10 +18,10 @@ private:
     vector<State *> allStates;
 
 public:
-    MatrixMaze(double  **mat, int N, int M, State &ini, State g) {
+    MatrixMaze(double **mat, int N, int M, State &ini, State g) {
         sizeCol = M;
         sizeRow = N;
-        matrix =mat;
+        matrix = mat;
 //        for (int i = 0; i < N; i++) {
 //            matrix[i] = new double[M];
 //            memcpy(matrix[i], mat[i], sizeof(double) * M);
@@ -41,16 +41,16 @@ public:
         int i = place.at(0);
         int j = place.at(1);
 
-        if (matrix[i + 1][j] != -1) {
+        if (i < sizeRow - 1 && matrix[i + 1][j] != -1) {
             succesors.push_back(createSuccesorState(s, i + 1, j));
         }
-        if (matrix[i - 1][j] != -1) {
+        if (i > 0 && matrix[i - 1][j] != -1) {
             succesors.push_back(createSuccesorState(s, i - 1, j));
         }
-        if (matrix[i][j + 1] != -1) {
+        if (j < sizeCol - 1 && matrix[i][j + 1] != -1) {
             succesors.push_back(createSuccesorState(s, i, j + 1));
         }
-        if (matrix[i][j - 1] != -1) {
+        if (j > 0 && matrix[i][j - 1] != -1) {
             succesors.push_back(createSuccesorState(s, i, j - 1));
         }
         return succesors;
