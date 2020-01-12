@@ -14,17 +14,18 @@ class MatrixSolver : public Solver<string, string> {
 
 private:
     Searcher *searcher;
-    Searchable *searchable{};
+    MatrixMaze *searchable;
+    string solution = "";
 public:
     MatrixSolver(Searcher *s) {
         searcher = s;
     }
 
-    virtual string createProblemFromString(const string &str);
+    virtual void createProblemFromString(const string &str);
 
-    virtual string toString(string solution);
+    virtual string toString(const string &solution) {return solution;}
 
-    virtual string solve(string problem);
+    virtual string solve(const string &problem);
 
     ~MatrixSolver() {
         delete searchable;

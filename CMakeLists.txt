@@ -6,14 +6,12 @@ set(CMAKE_CXX_FLAGS -pthread)
 add_executable(Milestone_2 main.cpp
         Server/Server.h Server/TCPServer.h
         ClientHandler/ClientHandler.h ClientHandler/AbstractCacheManager.h
-        Solvers/Solver.h
+        Solvers/Solver.h Solvers/StringReverser.h StringUtils.h
         ClientHandler/CacheManager.h
         Server/MySerialServer.h Server/MySerialServer.cpp
         ClientHandler/FileCacheManager.h
         ClientHandler/MyTestClientHandler.h
-        Solvers/StringReverser.h
-        StringUtils.h
-        Searchables/Searchable.h Searchables/State.h Searchables/State.cpp
+        Searchables/Searchable.h Searchables/State.h
         Searchers/Searcher.h Searchers/CustomPriorityQueue.h
         Searchers/BestFirstSearch.cpp Searchers/BestFirstSearch.h
         Searchers/AbstractQueueSearchers.h Searchers/AbstractQueueSearchers.cpp
@@ -21,3 +19,4 @@ add_executable(Milestone_2 main.cpp
         Searchers/DepthFirstSearch.cpp Searchers/DepthFirstSearch.h
         Solvers/MatrixSolver.h Solvers/MatrixSolver.cpp
         Searchers/Astar.h Searchers/Astar.cpp)
+

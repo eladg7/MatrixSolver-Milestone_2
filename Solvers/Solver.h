@@ -9,12 +9,11 @@ using namespace std;
 template<typename P, typename S>
 class Solver {
 public:
+    virtual void createProblemFromString(const string &str) = 0;
 
+    virtual string toString(const S &solution) = 0;
 
-    virtual P createProblemFromString(const string &str) =0;
-    virtual string toString(S solution) = 0;
-
-    virtual S solve(P problem) = 0;
+    virtual S solve(const P &problem) = 0;
 
 };
 

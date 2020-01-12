@@ -45,6 +45,7 @@ vector<State*> DepthFirstSearch::search(Searchable *searchable) {
                 n->getCurrentCost() + searchable->getCostToGetToNode(s)) {
                 removeFromStack(s);
                 s->setCost(n->getCurrentCost() + searchable->getCostToGetToNode(s));
+                s->setCameFrom(n);
                 addToStack(s);
             }
         }

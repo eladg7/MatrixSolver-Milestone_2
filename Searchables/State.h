@@ -24,10 +24,10 @@ public:
         stateDescription = state;
     }
 
-    State(const State &s) {
+    State(const State &s) {//copy
         stateDescription = s.getDescription();
         cost = s.getCurrentCost();
-        cameFrom = nullptr;
+        cameFrom = s.cameFrom;
     }
 
 
@@ -36,12 +36,15 @@ public:
         this->cameFrom = camefrom;
     }
 
+    void setCameFrom(State *s) { cameFrom = s; }
+
     State *getFather() {
         return cameFrom;
     }
 
 
     string getDescription() const { return stateDescription; }
+
 
     double getCurrentCost() const { return cost; }
 

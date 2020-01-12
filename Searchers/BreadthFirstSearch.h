@@ -5,7 +5,7 @@
 #include <queue>
 #include "AbstractQueueSearchers.h"
 
-class BreadthFirstSearch : AbstractQueueSearchers {
+class BreadthFirstSearch : public AbstractQueueSearchers {
 
 public:
     virtual vector<State*> search(Searchable *searchable);

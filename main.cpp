@@ -17,6 +17,8 @@ int main() {
         s.start();
         s.joinThreads();
     }
-    s.stop();
+    delete searcher;
+    delete solver;
+    delete cacheManager;
     return 0;
 }

@@ -18,6 +18,7 @@ vector<State*> BreadthFirstSearch::search(Searchable *searchable) {
                     n->getCurrentCost() + searchable->getCostToGetToNode(s)) {
                 removeFromQueue(s);
                 s->setCost(n->getCurrentCost() + searchable->getCostToGetToNode(s));
+                s->setCameFrom(n);
                 addToQueue(s);
             }
         }
