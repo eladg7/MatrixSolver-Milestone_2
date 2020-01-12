@@ -9,11 +9,9 @@ using namespace std;
 
 class StringReverser : public Solver<string, string> {
 public:
-    virtual string createProblemFromString(const string &str) {
-        return str;
-    }
+    virtual void createProblemFromString(const string &str) {}
 
-    virtual string toString(string solution) {
+    virtual string toString(const string &solution) {
         return solution;
     }
 

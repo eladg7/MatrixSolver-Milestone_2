@@ -14,8 +14,7 @@ int MySerialServer::acceptClient() {
                                   (struct sockaddr *) &this->address,
                                   (socklen_t *) &len);
         if (clientSocket < 0) {
-            cerr << "Cannot accept connection of client" << endl;
-            stop();
+            cerr << "Cannot connect to a new client" << endl;
             return -2;
         }
 
@@ -56,12 +55,13 @@ void MySerialServer::runningAcceptClientThread() {
     while (isRunning) {
         int result = acceptClient();
         if (result < 0) {
+            stop();
             break;
         }
 
         clientHandler->handleClient(getClientFD(), &isRunning);
         closeClientSocket();
-        cout <<"Closed client socket."<<endl;
+        cout << "Closed client socket." << endl;
         popClientFromQueue();
         usleep(5000);
     }
