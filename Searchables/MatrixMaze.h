@@ -58,8 +58,19 @@ public:
 
     State *createSuccesorState(State *s, int i, int j) {
         string place = to_string(i) + ',' + to_string(j);
-        State *newState = new State(place, s);
-        allStates.push_back(newState);
+        State *newState= nullptr;
+        for (State *state:allStates) {
+            if (state->getDescription() == place) {
+                newState = state;
+                break;
+            }
+        }
+        if(newState == nullptr){
+            newState = new State();
+            newState->init(place);
+            allStates.push_back(newState);
+        }
+
         return newState;
     }
 
@@ -68,13 +79,13 @@ public:
         vector<int> place = getPlacementOfNodeInMatrix(s);
         vector<int> dadsPlace = getPlacementOfNodeInMatrix(s->getFather());
         if (place.at(0) == dadsPlace.at(0)) {//same row
-            if (place.at(1) + 1 == dadsPlace.at(1)) {
+            if (place.at(1) - 1 == dadsPlace.at(1)) {
                 direction = "Right";
             } else {
                 direction = "Left";
             }
         } else {//same col
-            if (place.at(0) + 1 == dadsPlace.at(0)) {
+            if (place.at(0) - 1 == dadsPlace.at(0)) {
                 direction = "Down";
             } else {
                 direction = "Up";
