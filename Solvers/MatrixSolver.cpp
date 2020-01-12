@@ -1,6 +1,6 @@
 #include "MatrixSolver.h"
 
-string MatrixSolver::createProblemFromString(const string &str) {
+void MatrixSolver::createProblemFromString(const string &str) {
 
     vector<string> matrix = StringUtils::split(str, '\n');
     State goal;
@@ -9,19 +9,32 @@ string MatrixSolver::createProblemFromString(const string &str) {
     State initial;
     initial.init(matrix.back());
     matrix.pop_back();
-    unsigned M = (matrix.at(0).size());
-    unsigned N = matrix.size();
-    double mat[N][M];
+    int M = (StringUtils::split(matrix.front(),',')).size();
+    int N = matrix.size();
+
+    auto **mat = new double *[N];
     for (int i = 0; i < N; i++) {
+        mat[i] = new double[M];
         vector<string> nodes = StringUtils::split(matrix.front(), ',');
         matrix.erase(matrix.begin());
         for (int j = 0; j < M; j++) {
-            string doub = nodes.front();
+            string doub = StringUtils::trim(nodes.front());
             mat[i][j] = stod(doub);
             nodes.erase(nodes.begin());
         }
     }
 
+    searchable = new MatrixMaze(mat, M, N, initial, goal);
+}
 
-    searchable = new MatrixMaze(mat, M, N);
+
+string MatrixSolver::solve(const string &problem) {
+    createProblemFromString(problem);
+    vector<State *> backtrace = searcher->search(searchable);
+    for (State *s:backtrace) {
+        solution += searchable->getDirection(s) + " (" +
+                    to_string(s->getCurrentCost()) + "), ";
+    }
+    solution = solution.substr(0, solution.length() - 2);
+    return solution;
 }

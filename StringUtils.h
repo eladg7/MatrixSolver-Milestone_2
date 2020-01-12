@@ -35,7 +35,7 @@ public:
         return str;
     }
 
-    static string &trim(string &str, const string &chars) {
+    static string &trim(string &str, const string &chars= "\t\n\v\f\r ") {
         return ltrim(rtrim(str, chars), chars);
     }
 

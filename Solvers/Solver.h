@@ -11,10 +11,10 @@ class Solver {
 public:
 
 
-    virtual P createProblemFromString(const string &str) =0;
-    virtual string toString(S solution) = 0;
+    virtual void createProblemFromString(const string &str) =0;
+    virtual string toString(const S &solution) = 0;
 
-    virtual S solve(P problem) = 0;
+    virtual S solve(const P &problem) = 0;
 
 };
 

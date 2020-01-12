@@ -19,20 +19,19 @@ protected:
         }
     }
 
-    static int writeToClient(int clientFD, vector<string> messages) {
-        for (const string &str:messages) {
-            const char *message = str.c_str();
+    static int writeToClient(int clientFD, string messages) {
+        const char *message = messages.c_str();
 
-            char copy[strlen(message) + 2];
-            strcpy(copy, message);
-            if (message[strlen(message) - 1] != '\n') {
-                strcat(copy, "\r\n");
-            }
-
-            send(clientFD, copy, strlen(copy), 0);
-            cout << "Message sent" << endl;
-
+        char copy[strlen(message) + 2];
+        strcpy(copy, message);
+        if (message[strlen(message) - 1] != '\n') {
+            strcat(copy, "\r\n");
         }
+
+        send(clientFD, copy, strlen(copy), 0);
+        cout << "Message sent" << endl;
+
+
         return 0;
 
     };

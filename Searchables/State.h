@@ -24,10 +24,10 @@ public:
         stateDescription = state;
     }
 
-    State(const State &s) {
+    State(const State &s) {//copy
         stateDescription = s.getDescription();
         cost = s.getCurrentCost();
-        cameFrom = nullptr;
+        cameFrom = s.cameFrom;
     }
 
 
@@ -42,6 +42,7 @@ public:
 
 
     string getDescription() const { return stateDescription; }
+
 
     double getCurrentCost() const { return cost; }
 

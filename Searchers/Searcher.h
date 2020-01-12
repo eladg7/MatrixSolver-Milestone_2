@@ -3,17 +3,19 @@
 
 #include "../Searchables/Searchable.h"
 
-class Searcher{
+class Searcher {
 public:
-   virtual vector<State*> search(Searchable *searchable) = 0;
-    virtual int getNumberOfNodesEvaluated()=0;
+    virtual vector<State *> search(Searchable *searchable) = 0;
 
-    vector<State*> backTrace(State *s) {
-        vector<State*> backtrace;
-        while (s->getFather()!= nullptr) {
-            backtrace.insert(backtrace.begin(), s);
-            s = (*s).getFather();
+    virtual int getNumberOfNodesEvaluated() = 0;
+
+    vector<State *> backTrace(State *goal) {
+        vector<State *> backtrace;
+        while (goal->getFather() != nullptr) {
+            backtrace.insert(backtrace.begin(), goal);
+            goal = (*goal).getFather();
         }
+        backtrace.insert(backtrace.begin(), goal);// first node
         return backtrace;
     }
 
