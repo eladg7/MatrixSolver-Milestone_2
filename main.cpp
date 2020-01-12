@@ -9,7 +9,8 @@
 int main() {
     MySerialServer s;
     Searcher *searcher = new BreadthFirstSearch();
-    MatrixSolver *solver = new MatrixSolver(searcher);
+//    MatrixSolver *solver = new MatrixSolver(searcher);
+    StringReverser *solver = new StringReverser();
     FileCacheManager<string> *cacheManager = new FileCacheManager<string>(5);
     MyTestClientHandler<string, string> handler(solver, cacheManager);
     if (s.open(5600, &handler)) {
