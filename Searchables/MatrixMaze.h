@@ -45,7 +45,6 @@ public:
             dadsPlace={0,0};
         }else{
             dadsPlace = getPlacementOfNodeInMatrix(s->getFather());
-
         }
         //check if he didnt go pass the border,
         // and through a wall, and if he is not coming from his dad.
