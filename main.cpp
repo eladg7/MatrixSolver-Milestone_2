@@ -12,7 +12,7 @@ int main() {
     auto *solver = new MatrixSolver(searcher);
     auto *cacheManager = new FileCacheManager<string>(5);
     MyTestClientHandler<string, string> handler(solver, cacheManager);
-    if (s.open(5601, &handler)) {
+    if (s.open(5600, &handler)) {
         s.start();
         s.joinThreads();
     }
