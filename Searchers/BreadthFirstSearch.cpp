@@ -10,15 +10,12 @@ vector<State *> BreadthFirstSearch::search(Searchable *searchable) {
         this->numberOfNodes++;
 
         if (*n == goalState) {
-            return Searcher::backTrace(n);
+            return Searcher::backTraceAndUpdateCost(n, searchable);
         }
         vector<State *> succerssors = searchable->getAllPossibleStates(n);
         for (State *s:succerssors) {
-//            if (s->getCurrentCost() >
-//                    n->getCurrentCost() + searchable->getCostToGetToNode(s)) {
             if (s->getCurrentCost() == INFINITY) {//not visited
-                removeFromQueue(s);
-                s->setCost(n->getCurrentCost() + searchable->getCostToGetToNode(s));
+                s->setCost(0);
                 s->setCameFrom(n);
                 addToQueue(s);
             }
@@ -27,16 +24,16 @@ vector<State *> BreadthFirstSearch::search(Searchable *searchable) {
 
 }
 
-State* BreadthFirstSearch::popFromQueue() {
+State *BreadthFirstSearch::popFromQueue() {
     State *s = openStateList.front();
     openStateList.pop();
     return s;
 }
 
-void BreadthFirstSearch::removeFromQueue(State* s) {
-    queue<State*> newQueue;
+void BreadthFirstSearch::removeFromQueue(State *s) {
+    queue<State *> newQueue;
     while (!openStateList.empty()) {
-        State* removedState = popFromQueue();
+        State *removedState = popFromQueue();
         if (*s == *removedState) {
             continue;
         }
@@ -45,6 +42,6 @@ void BreadthFirstSearch::removeFromQueue(State* s) {
     openStateList.swap(newQueue);
 }
 
-void BreadthFirstSearch::addToQueue(State* s) {
+void BreadthFirstSearch::addToQueue(State *s) {
     openStateList.push(s);
 }

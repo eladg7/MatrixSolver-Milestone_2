@@ -7,19 +7,19 @@
 
 class DepthFirstSearch : public Searcher {
 private:
-    stack<State*> openStateList{};
+    stack<State *> openStack{};
     int numberOfNodes = 0;
 
-    State* popFromStack();
+    State *popFromStack();
 
     void addToStack(State *s);
 
     void removeFromStack(State *s);
 
-    vector<State*> backTrace(State *s);
-
 public:
-    virtual vector<State*> search(Searchable *searchable);
+    virtual vector<State *> search(Searchable *searchable);
+
+    int getNumberOfNodesEvaluated() { return numberOfNodes; }
 };
 
 
