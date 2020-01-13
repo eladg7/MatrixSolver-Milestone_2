@@ -23,7 +23,6 @@ vector<State *> Astar::search(Searchable *searchable) {
     map<State *, double> fScore;
     fScore[initialState] = searchable->getCostToGetToNode(initialState);
 
-//    map<State *, double>::iterator current;
     State *current = nullptr;
     double tentative_gScore = 0;
     while (!openSet.empty()) {

@@ -7,14 +7,14 @@
 
 #define BUFFER_SIZE 1024
 
-template<typename P, typename S>
+template<typename P, typename S, typename T>
 class MyTestClientHandler : public ClientHandler {
 private:
     Solver<P, S> *solver;
-    CacheManager<S> *cm;
+    CacheManager<T> *cm;
 
 public:
-    MyTestClientHandler(Solver<P, S> *s, CacheManager<S> *cache) {
+    MyTestClientHandler(Solver<P, S> *s, CacheManager<T> *cache) {
         solver = s;
         cm = cache;
     }
@@ -23,10 +23,15 @@ public:
         string solution;
         StringUtils::eraseAllSubStr(key, "\r");
         if (cm->keyExist(key)) {
-            solution = solver->toString(cm->get(key));
+            char *str = cm->get(key);
+            solution = str;
+            solver->toString(solution);
         } else {
             solution = solver->toString(solver->solve(key));
-            // todo cm->insert(solution); dont know how to represent matrix in key.
+            char *temp = new char[sizeof(solution)];
+            strcpy(temp, solution.c_str());
+            cm->insert(key, temp);
+            delete[]temp;
         }
         return solution;
     }
