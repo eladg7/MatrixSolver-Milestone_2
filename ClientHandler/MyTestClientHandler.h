@@ -32,7 +32,7 @@ public:
     }
 
     virtual void handleClient(int clientFD, bool *isRunning) {
-        char buffer[8 * BUFFER_SIZE] = {0};
+        string buffer;
         char tempBuffer[BUFFER_SIZE] = {0};
         int isRead = 0;
         string solution;
@@ -43,20 +43,19 @@ public:
                 cerr << "Couldn't read from client." << endl;
                 break;
             }
-            ClientHandler::rnInTheEnd(tempBuffer);
-            string tempStrBuffer = tempBuffer;
-            if (StringUtils::endsWith(tempStrBuffer, "end")) {
-                string key = (buffer + tempStrBuffer + "\r");//added /r tp erase this specific
-                StringUtils::eraseAllSubStr(key, "\nend\r");
 
-                solution = getSolutionFromKey(key);
+            string tempStrBuffer = tempBuffer;
+            buffer += tempStrBuffer;
+            string copy = buffer;
+            StringUtils::rtrim(copy);
+            if (StringUtils::endsWith(copy, "end")) {
+                buffer = copy.substr(0, copy.length() - 3);
+                solution = getSolutionFromKey(buffer);
                 this->writeToClient(clientFD, solution);
-                memset(buffer, 0, sizeof buffer);
+                buffer.clear();
                 break;
             }
 
-            strcat(buffer, tempBuffer);
-            strcat(buffer, "\n");
             memset(tempBuffer, 0, sizeof tempBuffer);
         }
     }
