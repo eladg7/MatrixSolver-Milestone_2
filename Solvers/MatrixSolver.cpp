@@ -9,6 +9,7 @@ void MatrixSolver::createProblemFromString(const string &str) {
     State initial;
     initial.init(matrix.back());
     matrix.pop_back();
+    //todo check regex of inital and goal, cerr if there is a problem
     int M = (StringUtils::split(matrix.front(), ',')).size();
     int N = matrix.size();
 
@@ -25,11 +26,11 @@ void MatrixSolver::createProblemFromString(const string &str) {
         }
     }
 
-    searchable = new MatrixMaze(mat, M, N, initial, goal);
+    searchable = new MatrixMaze(mat, N, M, initial, goal);
 }
 
-
 string MatrixSolver::solve(const string &problem) {
+    solution.clear();
     createProblemFromString(problem);
     vector<State *> backtrace = searcher->search(searchable);
     for (State *s:backtrace) {

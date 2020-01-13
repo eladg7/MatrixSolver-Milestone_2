@@ -40,17 +40,30 @@ public:
         vector<int> place = getPlacementOfNodeInMatrix(s);
         int i = place.at(0);
         int j = place.at(1);
+        vector<int> dadsPlace;
+        if(*s == *getInitialState()){//first node doesnt have a dad
+            dadsPlace={0,0};
+        }else{
+            dadsPlace = getPlacementOfNodeInMatrix(s->getFather());
 
-        if (i < sizeRow - 1 && matrix[i + 1][j] != -1) {
+        }
+        //check if he didnt go pass the border,
+        // and through a wall, and if he is not coming from his dad.
+
+        if (i < sizeRow - 1 && matrix[i + 1][j] != -1
+            && i + 1 != dadsPlace.at(0)) {
             succesors.push_back(createSuccesorState(s, i + 1, j));
         }
-        if (i > 0 && matrix[i - 1][j] != -1) {
+        if (i > 0 && matrix[i - 1][j] != -1
+            && i - 1 != dadsPlace.at(0)) {
             succesors.push_back(createSuccesorState(s, i - 1, j));
         }
-        if (j < sizeCol - 1 && matrix[i][j + 1] != -1) {
+        if (j < sizeCol - 1 && matrix[i][j + 1] != -1
+            && j + 1 != dadsPlace.at(1)) {
             succesors.push_back(createSuccesorState(s, i, j + 1));
         }
-        if (j > 0 && matrix[i][j - 1] != -1) {
+        if (j > 0 && matrix[i][j - 1] != -1
+            && j - 1 != dadsPlace.at(1)) {
             succesors.push_back(createSuccesorState(s, i, j - 1));
         }
         return succesors;
@@ -58,14 +71,14 @@ public:
 
     State *createSuccesorState(State *s, int i, int j) {
         string place = to_string(i) + ',' + to_string(j);
-        State *newState= nullptr;
+        State *newState = nullptr;
         for (State *state:allStates) {
             if (state->getDescription() == place) {
                 newState = state;
                 break;
             }
         }
-        if(newState == nullptr){
+        if (newState == nullptr) {
             newState = new State();
             newState->init(place);
             allStates.push_back(newState);
