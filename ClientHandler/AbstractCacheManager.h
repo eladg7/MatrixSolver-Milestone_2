@@ -1,7 +1,3 @@
-//
-// Created by yekaterina on 07/01/2020.
-//
-
 #ifndef MILESTONE_2_ABSTRACTCACHEMANAGER_H
 #define MILESTONE_2_ABSTRACTCACHEMANAGER_H
 
@@ -9,11 +5,16 @@
 
 template<typename T>
 class AbstractCacheManager : public CacheManager<T> {
+public:
+    explicit AbstractCacheManager(const string &cn) {
+        this->className = cn;
+    }
+
 protected:
     int sizeCacheList{};
     list<string> refrenceList;
-    unordered_map<std::string, T> mymap;
-    const string className = typeid(T).name();
+    unordered_map<string, T> mymap;
+    string className;
     char exceptionBuffer[64] = {0};
 
     virtual void insert(const string &key, const T &obj) {
@@ -49,7 +50,7 @@ protected:
     }
 
     virtual void foreach(void (*f)(T &)) {
-        for (string key:this->refrenceList) {
+        for (const string& key:this->refrenceList) {
             f(this->mymap[key]);
         }
     }

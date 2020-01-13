@@ -10,9 +10,9 @@ int main() {
     MySerialServer s;
     auto *searcher = new Astar();
     auto *solver = new MatrixSolver(searcher);
-    auto *cacheManager = new FileCacheManager<string>(5);
-    MyTestClientHandler<string, string> handler(solver, cacheManager);
-    if (s.open(5600, &handler)) {
+    auto *cacheManager = new FileCacheManager<char *>(5, typeid(MatrixSolver).name());
+    MyTestClientHandler<string, string,char*> handler(solver, cacheManager);
+    if (s.open(5601, &handler)) {
         s.start();
         s.joinThreads();
     }

@@ -2,6 +2,7 @@
 #define MILESTONE_2_STRINGREVERSER_H
 
 #include "Solver.h"
+#include "../StringUtils.h"
 #include <string>
 #include <algorithm>
 

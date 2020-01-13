@@ -11,8 +11,6 @@ using namespace std;
 
 class Astar : public Searcher {
 private:
-    static void initScore(map<State *, double> *gScore);
-
     int numberOfNodesEvaluated = 0;
 public:
     virtual vector<State *> search(Searchable *searchable);
