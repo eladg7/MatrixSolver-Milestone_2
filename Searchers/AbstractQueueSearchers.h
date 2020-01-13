@@ -8,7 +8,8 @@ using namespace std;
 
 class AbstractQueueSearchers : public Searcher {
 protected:
-    CustomPriorityQueue<State*> openStateList{};
+    CustomPriorityQueue<State, vector<State>, std::greater<>> priorityQueue{};//to know the priority of each state
+    vector<State *>openQueue{};//to hold all the satets
     int numberOfNodes = 0;
 
     State* popFromQueue();
@@ -16,8 +17,10 @@ protected:
     void addToQueue(State *s);
 
     void removeFromQueue(State *s);
+    void eraseFromPointerQueue(State *s);
 
-public:
+
+        public:
     virtual int getNumberOfNodesEvaluated() {
         return numberOfNodes;
     }

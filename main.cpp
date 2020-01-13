@@ -5,11 +5,12 @@
 #include "ClientHandler/FileCacheManager.h"
 #include "Searchers/BreadthFirstSearch.h"
 #include "Solvers/MatrixSolver.h"
+#include "Searchers/BestFirstSearch.h"
 
 int main() {
     MySerialServer s;
 //    StringReverser *solver = new StringReverser();
-    auto *searcher = new BreadthFirstSearch();
+    auto *searcher = new BestFirstSearch();
     auto *solver = new MatrixSolver(searcher);
     auto *cacheManager = new FileCacheManager<string>(5);
     MyTestClientHandler<string, string> handler(solver, cacheManager);
