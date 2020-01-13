@@ -4,15 +4,15 @@ void DepthFirstSearch::addToStack(State *s) {
     openStateList.push(s);
 }
 
-State* DepthFirstSearch::popFromStack() {
-    State* s = openStateList.top();
+State *DepthFirstSearch::popFromStack() {
+    State *s = openStateList.top();
     openStateList.pop();
     return s;
 }
 
-void DepthFirstSearch::removeFromStack(State* s) {
-    stack<State*> newStack;
-    stack<State*> temp;
+void DepthFirstSearch::removeFromStack(State *s) {
+    stack<State *> newStack;
+    stack<State *> temp;
     while (!openStateList.empty()) {
         State *tempState = popFromStack();
         if (tempState == s) {
@@ -27,22 +27,23 @@ void DepthFirstSearch::removeFromStack(State* s) {
     openStateList.swap(newStack);
 }
 
-vector<State*> DepthFirstSearch::search(Searchable *searchable) {
+vector<State *> DepthFirstSearch::search(Searchable *searchable) {
     State *initial = searchable->getInitialState();
     initial->setCost(searchable->getCostToGetToNode(initial));
     addToStack(initial);
     State goalState = searchable->getGoalState();
     while (!openStateList.empty()) {
-        State* n = popFromStack();
+        State *n = popFromStack();
         this->numberOfNodes++;
 
         if (*n == goalState) {
             return Searcher::backTrace(n);
         }
-        vector<State*> succerssors = searchable->getAllPossibleStates(n);
+        vector<State *> succerssors = searchable->getAllPossibleStates(n);
         for (State *s:succerssors) {
-            if (s->getCurrentCost() >
-                n->getCurrentCost() + searchable->getCostToGetToNode(s)) {
+//            if (s->getCurrentCost() >
+//                n->getCurrentCost() + searchable->getCostToGetToNode(s)) {
+            if (s->getCurrentCost() == INFINITY) {
                 removeFromStack(s);
                 s->setCost(n->getCurrentCost() + searchable->getCostToGetToNode(s));
                 s->setCameFrom(n);

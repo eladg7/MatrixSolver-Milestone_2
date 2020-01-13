@@ -21,10 +21,10 @@ public:
 
     string getSolutionFromKey(string &key) {
         string solution;
+        StringUtils::eraseAllSubStr(key, "\r");
         if (cm->keyExist(key)) {
             solution = solver->toString(cm->get(key));
         } else {
-            StringUtils::eraseAllSubStr(key, "\r");
             solution = solver->toString(solver->solve(key));
             // todo cm->insert(solution); dont know how to represent matrix in key.
         }
@@ -38,7 +38,7 @@ public:
         string solution;
 
         while (*isRunning) {
-            isRead = read(clientFD, tempBuffer, sizeof(buffer));
+            isRead = read(clientFD, tempBuffer, sizeof(tempBuffer));
             if (isRead <= 0) {//error getting info from client.
                 cerr << "Couldn't read from client." << endl;
                 break;
@@ -46,7 +46,7 @@ public:
             ClientHandler::rnInTheEnd(tempBuffer);
             string tempStrBuffer = tempBuffer;
             if (StringUtils::endsWith(tempStrBuffer, "end")) {
-                string key = (buffer + tempStrBuffer+"\r");//added /r tp erase this specific
+                string key = (buffer + tempStrBuffer + "\r");//added /r tp erase this specific
                 StringUtils::eraseAllSubStr(key, "\nend\r");
 
                 solution = getSolutionFromKey(key);
