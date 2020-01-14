@@ -45,7 +45,7 @@ public:
         }
     }
 
-    virtual T *get(const string &key) {
+    virtual T* get(const string &key) {
         string hashedKey = hashedToString(key);
         T *obj;
         auto iter = this->mymap.find(hashedKey);
@@ -90,6 +90,7 @@ public:
             cerr << "Couldn't open file to read." << endl;
         }
 
+        //get bytes in file to predict size of object
         streampos fsize = fileObj.tellg();
         fileObj.seekg(0, std::ios::end);
         fsize = fileObj.tellg() - fsize;
