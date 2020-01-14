@@ -7,7 +7,7 @@
 
 #define BUFFER_SIZE 1024
 
-template<typename P, typename S, typename T>
+template<typename P, typename S,typename T>
 class MyTestClientHandler : public ClientHandler {
 private:
     Solver<P, S> *solver;
@@ -20,20 +20,18 @@ public:
     }
 
     string getSolutionFromKey(string &key) {
-        string solution;
+        S solution;
+        string strSolution;
         StringUtils::eraseAllSubStr(key, "\r");
         if (cm->keyExist(key)) {
-            char *str = cm->get(key);
-            solution = str;
-            solver->toString(solution);
+            strSolution = cm->get(key);
         } else {
-            solution = solver->toString(solver->solve(key));
-            char *temp = new char[sizeof(solution)];
-            strcpy(temp, solution.c_str());
-            cm->insert(key, temp);
-            delete[]temp;
+            solution = solver->solve(key);
+            strSolution = solver->toString(solution);
+            cm->insert(key, (char*)strSolution.c_str(),strSolution.length());//no +1 bytes number
         }
-        return solution;
+
+        return strSolution;
     }
 
     virtual void handleClient(int clientFD, bool *isRunning) {

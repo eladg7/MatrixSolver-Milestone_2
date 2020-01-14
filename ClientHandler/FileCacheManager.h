@@ -32,33 +32,33 @@ public:
         this->sizeCacheList = capacity;
     }
 
-    virtual void insert(string key, T obj) {
-        insert(key, obj, true);
+    virtual void insert(string key, T *obj, int size) {
+        insert(key, obj, true, size);
     }
 
-    void insert(const string &key, const T &obj, bool toWrite) {
+    void insert(const string &key, T *obj, bool toWrite, int size) {
         string hashedKey = hashedToString(key);
 
-        AbstractCacheManager<T>::insert(hashedKey, obj);
+        AbstractCacheManager<T>::insert(hashedKey, obj, size);
         if (toWrite) {
-            writeObjectToFile(obj, hashedKey);
+            writeObjectToFile(obj, hashedKey, size);
         }
     }
 
-    virtual T get(const string &key) {
+    virtual T *get(const string &key) {
         string hashedKey = hashedToString(key);
-        T obj;
+        T *obj;
         auto iter = this->mymap.find(hashedKey);
         if (iter != this->mymap.end()) {
             obj = iter->second;
         } else {
-            obj = readObjectFromFile(hashedKey);
+            obj = (T *) readObjectFromFile(hashedKey);
         }
         insert(hashedKey, obj, false);
         return obj;
     }
 
-    void writeObjectToFile(const T &obj, const string &key) {
+    void writeObjectToFile(T *obj, const string &key, int sizeBytes) {
         string hashedKey = hashedToString(key);
         ofstream fileObj;
 
@@ -70,7 +70,7 @@ public:
             throw "Error creating file.";
         }
 
-        fileObj.write((char *) &obj, sizeof(obj));
+        fileObj.write((char *) obj, sizeBytes);
         try {
             fileObj.close();
         } catch (exception &e) {
@@ -78,7 +78,7 @@ public:
         }
     }
 
-    T readObjectFromFile(const string &key) {
+    char *readObjectFromFile(const string &key) {
         string hashedKey = hashedToString(key);
         ifstream fileObj;
         char cwd[256] = {0};
@@ -87,10 +87,17 @@ public:
 
         fileObj.open(cwd + this->className + "_" + hashedKey + ".bin", ios::binary | ios::in);
         if (!fileObj) {
-            return NULL;
+            cerr << "Couldn't open file to read." << endl;
         }
-        T obj;
-        if (!fileObj.read((char *) &obj, sizeof(obj))) {
+
+        streampos fsize = fileObj.tellg();
+        fileObj.seekg(0, std::ios::end);
+        fsize = fileObj.tellg() - fsize;
+        fileObj.seekg(0, std::ios::beg);
+        char *obj = new char[(int) fsize + 1];
+        memset(obj, 0, (int)fsize + 1);
+
+        if (!fileObj.read((char *) obj, fsize)) {
             cerr << "Couldn't read object from file." << endl;
         };
         try {

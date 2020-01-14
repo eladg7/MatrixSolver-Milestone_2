@@ -10,7 +10,7 @@
 #include "../Searchables/MatrixMaze.h"
 #include "../StringUtils.h"
 
-class MatrixSolver : public Solver<string, string> {
+class MatrixSolver : public Solver<string, vector<State *>> {
 
 private:
     Searcher *searcher;
@@ -23,9 +23,9 @@ public:
 
     virtual void createProblemFromString(const string &str);
 
-    virtual string toString(const string &solution) {return solution;}
+    virtual string toString(const vector<State *> &backtrace);
 
-    virtual string solve(const string &problem);
+    virtual vector<State *> solve(const string &problem);
 
     ~MatrixSolver() {
         delete searchable;

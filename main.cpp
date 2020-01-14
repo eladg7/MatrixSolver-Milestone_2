@@ -5,14 +5,15 @@
 #include "Searchers/BreadthFirstSearch.h"
 #include "Solvers/MatrixSolver.h"
 #include "Searchers/Astar.h"
+#include "Searchers/BestFirstSearch.h"
 
 int main() {
     MySerialServer s;
-    auto *searcher = new Astar();
+    auto *searcher = new BestFirstSearch();
     auto *solver = new MatrixSolver(searcher);
-    auto *cacheManager = new FileCacheManager<char *>(5, typeid(MatrixSolver).name());
-    MyTestClientHandler<string, string,char*> handler(solver, cacheManager);
-    if (s.open(5601, &handler)) {
+    auto *cacheManager = new FileCacheManager<char>(5, typeid(MatrixSolver).name());
+    MyTestClientHandler<string, vector<State*>,char> handler(solver, cacheManager);
+    if (s.open(5600, &handler)) {
         s.start();
         s.joinThreads();
     }

@@ -22,10 +22,6 @@ public:
         sizeCol = M;
         sizeRow = N;
         matrix = mat;
-//        for (int i = 0; i < N; i++) {
-//            matrix[i] = new double[M];
-//            memcpy(matrix[i], mat[i], sizeof(double) * M);
-//        }
         initial = new State(ini);
         allStates.push_back(initial);
         goal = g;

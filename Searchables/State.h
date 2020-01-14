@@ -13,7 +13,7 @@ using namespace std;
 
 class State {
 private:
-    string stateDescription;
+    char stateDescription[16]={0};
     double cost = INFINITY;
     State *cameFrom;
 
@@ -21,18 +21,19 @@ public:
     State() { cameFrom = nullptr; }
 
     void init(string state) {
-        stateDescription = state;
+        strcpy(stateDescription, state.c_str());
     }
 
     State(const State &s) {//copy
-        stateDescription = s.getDescription();
+        strcpy(stateDescription, s.getDescription().c_str());
+
         cost = s.getCurrentCost();
         cameFrom = s.cameFrom;
     }
 
 
     State(string state, State *camefrom) {
-        stateDescription = state;
+        strcpy(stateDescription, state.c_str());
         this->cameFrom = camefrom;
     }
 
@@ -43,7 +44,10 @@ public:
     }
 
 
-    string getDescription() const { return stateDescription; }
+    string getDescription() const {
+        string s = stateDescription;
+        return s;
+    }
 
 
     double getCurrentCost() const { return cost; }
@@ -67,12 +71,13 @@ public:
     }
 
     friend bool operator==(const State &s1, const State &s2) {
-        return s1.stateDescription == s2.stateDescription;
+        return s1.getDescription()== s2.getDescription();
     }
 
     friend bool operator!=(const State &s1, const State &s2) {
-        return s1.stateDescription != s2.stateDescription;
+        return s1.getDescription() != s2.getDescription();
     }
+
 };
 
 
