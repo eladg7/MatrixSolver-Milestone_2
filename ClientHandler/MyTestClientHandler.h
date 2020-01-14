@@ -7,7 +7,7 @@
 
 #define BUFFER_SIZE 1024
 
-template<typename P, typename S,typename T>
+template<typename P, typename S, typename T>
 class MyTestClientHandler : public ClientHandler {
 private:
     Solver<P, S> *solver;
@@ -28,7 +28,8 @@ public:
         } else {
             solution = solver->solve(key);
             strSolution = solver->toString(solution);
-            cm->insert(key, (char*)strSolution.c_str(),strSolution.length());//no +1 bytes number
+            //casting to char*, to avoid const
+            cm->insert(key, (char *) strSolution.c_str(), strSolution.length());//no +1 bytes number
         }
 
         return strSolution;
