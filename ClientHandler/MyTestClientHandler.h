@@ -53,7 +53,8 @@ public:
             string copy = buffer;
             StringUtils::rtrim(copy);
             if (StringUtils::endsWith(copy, "end")) {
-                buffer = copy.substr(0, copy.length() - 3);
+                copy.erase(copy.length() - 3);
+                buffer = copy;
                 solution = getSolutionFromKey(buffer);
                 this->writeToClient(clientFD, solution);
                 buffer.clear();

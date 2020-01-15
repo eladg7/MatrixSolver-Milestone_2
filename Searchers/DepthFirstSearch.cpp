@@ -29,6 +29,7 @@ void DepthFirstSearch::removeFromStack(State *s) {
 
 
 vector<State *> DepthFirstSearch::search(Searchable *searchable) {
+    this->numberOfNodes = 0;
     State *initial = searchable->getInitialState();
     initial->setCost(searchable->getCostToGetToNode(initial));
     addToStack(initial);

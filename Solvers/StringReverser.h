@@ -16,7 +16,7 @@ public:
         return solution;
     }
 
-    virtual string solve(const string& str) {
+    virtual string solve(const string &str) {
         vector<string> splittedProblems = StringUtils::split(str, '\n');
         string result{};
         if (!splittedProblems.empty()) {

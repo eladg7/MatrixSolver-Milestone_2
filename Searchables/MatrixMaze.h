@@ -37,9 +37,9 @@ public:
         int i = place.at(0);
         int j = place.at(1);
         vector<int> dadsPlace;
-        if(*s == *getInitialState()){//first node doesnt have a dad
-            dadsPlace={0,0};
-        }else{
+        if (*s == *getInitialState()) {//first node doesnt have a dad
+            dadsPlace = {0, 0};
+        } else {
             dadsPlace = getPlacementOfNodeInMatrix(s->getFather());
         }
         //check if he didnt go pass the border,
@@ -80,6 +80,36 @@ public:
         }
 
         return newState;
+    }
+
+    double getHeuristic(State *state) {
+        double cost = 0;
+        if (state != nullptr) {
+            vector<int> place = getPlacementOfNodeInMatrix(state);
+
+            auto goalState = getGoalState();
+            vector<int> goalPlace = getPlacementOfNodeInMatrix(&goalState);
+
+            double dx = abs(place.at(0) - goalPlace.at(0));
+            double dy = abs(place.at(1) - goalPlace.at(1));
+            vector<State *> neighbors = getAllPossibleStates(state);
+            if (!neighbors.empty()) {
+                auto minValue = neighbors.at(0)->getCurrentCost();
+                for (int i = 1; i < neighbors.size(); i++) {
+                    auto currentCost = neighbors.at(i)->getCurrentCost();
+                    if (currentCost != (1.0 / 0.0) && currentCost < minValue) {
+                        minValue = currentCost;
+                    }
+                }
+
+                //  multiply it only if it's not infinity
+                if (minValue != (1.0 / 0.0)) {
+                    cost *= minValue;
+                }
+
+            }
+        }
+        return cost;
     }
 
     string getDirection(State *s) {
