@@ -4,20 +4,14 @@
 
 State *AbstractQueueSearchers::popFromQueue() {
     State *s = nullptr;
-    bool flag = false;
     for ( auto it = openQueue.begin(); it != openQueue.end(); ++it) {
-        string si = (*it)->getDescription();
-        State si1 = priorityQueue.top();
-        string si2 = si1.getDescription();
-        if (si == si2) {
+        if ((*it)->getDescription() ==
+        priorityQueue.top().getDescription()) {
             s = *it;
             openQueue.erase(it);
-            flag = true;
+
             break;
         }
-    }
-    if (!flag) {
-        int x = 2;
     }
     priorityQueue.pop();
     return s;
