@@ -42,7 +42,7 @@ public:
         string solution;
 
         while (*isRunning) {
-            isRead = read(clientFD, tempBuffer, sizeof(tempBuffer));
+            isRead = read(clientFD, tempBuffer, BUFFER_SIZE);
             if (isRead <= 0) {//error getting info from client.
                 cerr << "Couldn't read from client." << endl;
                 break;
@@ -60,7 +60,7 @@ public:
                 break;
             }
 
-            memset(tempBuffer, 0, sizeof tempBuffer);
+            memset(tempBuffer, 0,  BUFFER_SIZE);
         }
     }
 };
