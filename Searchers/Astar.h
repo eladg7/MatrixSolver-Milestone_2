@@ -12,6 +12,9 @@ using namespace std;
 class Astar : public Searcher {
 private:
     int numberOfNodesEvaluated = 0;
+
+    static State *findState(const vector<State *> &allStates, const State &stateToFind);
+
 public:
     virtual vector<State *> search(Searchable *searchable);
 

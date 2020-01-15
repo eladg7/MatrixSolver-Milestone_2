@@ -20,6 +20,7 @@ public:
 
     virtual double getCostToGetToNode(State *s) = 0;
 
+    virtual double getHeuristic(State *state) = 0;
 };
 
 #endif //MILESTONE_2_SEARCHABLE_H

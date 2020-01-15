@@ -31,8 +31,6 @@ public:
     static void acceptingClientThread(MySerialServer *server);
 
     void pushToClientQueue(int clientSocket);
-
-
 };
 
 #endif //MILESTONE_2_MYSERIALSERVER_H

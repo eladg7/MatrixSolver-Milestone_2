@@ -1,7 +1,8 @@
+#include <algorithm>
+#include <iostream>
 #include "MatrixSolver.h"
 
 void MatrixSolver::createProblemFromString(const string &str) {
-
     vector<string> matrix = StringUtils::split(str, '\n');
     State goal;
     goal.init(matrix.back());

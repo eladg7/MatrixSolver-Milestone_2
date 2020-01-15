@@ -1,6 +1,7 @@
 #include "BreadthFirstSearch.h"
 
 vector<State *> BreadthFirstSearch::search(Searchable *searchable) {
+    this->numberOfNodes = 0;
     State *initial = searchable->getInitialState();
     initial->setCost(searchable->getCostToGetToNode(initial));
     addToQueue(initial);

@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <functional>
+#include <thread>
 #include "../ClientHandler/ClientHandler.h"
 
 namespace server_side {
@@ -10,13 +11,13 @@ namespace server_side {
     protected:
         bool isRunning = false;
 
-        ClientHandler *clientHandler;
+        ClientHandler *clientHandler{};
 
         int socketFD{};
 
         int port{};
 
-        vector<thread> threadsOfServer;
+        vector<thread> threadsOfServer{};
 
     public:
         virtual bool open(int port, ClientHandler *c) = 0;
@@ -24,7 +25,7 @@ namespace server_side {
         virtual void stop() {
             this->isRunning = false;
             close(this->socketFD);
-            cout <<"Closed server socket."<<endl;
+            cout << "Closed server socket." << endl;
         }
 
         virtual bool isServerRunning() {
@@ -35,7 +36,7 @@ namespace server_side {
 
 
         virtual void joinThreads() {
-            std::for_each(threadsOfServer.begin(),threadsOfServer.end(),
+            std::for_each(threadsOfServer.begin(), threadsOfServer.end(),
                           std::mem_fn(&std::thread::join));
         }
         ~Server() = default;

@@ -30,7 +30,7 @@ public:
             solution = solver->toString(solver->solve(key));
             char *temp = new char[sizeof(solution)];
             strcpy(temp, solution.c_str());
-            cm->insert(key, temp);
+//            cm->insert(key, temp);
             delete[]temp;
         }
         return solution;
@@ -54,7 +54,8 @@ public:
             string copy = buffer;
             StringUtils::rtrim(copy);
             if (StringUtils::endsWith(copy, "end")) {
-                buffer = copy.substr(0, copy.length() - 3);
+                copy.erase(copy.length() - 3);
+                buffer = copy;
                 solution = getSolutionFromKey(buffer);
                 this->writeToClient(clientFD, solution);
                 buffer.clear();
