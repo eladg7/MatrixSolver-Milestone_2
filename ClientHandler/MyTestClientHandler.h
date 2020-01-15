@@ -20,20 +20,19 @@ public:
     }
 
     string getSolutionFromKey(string &key) {
-        string solution;
+        S solution;
+        string strSolution;
         StringUtils::eraseAllSubStr(key, "\r");
         if (cm->keyExist(key)) {
-            char *str = cm->get(key);
-            solution = str;
-            solver->toString(solution);
+            strSolution = cm->get(key);
         } else {
-            solution = solver->toString(solver->solve(key));
-            char *temp = new char[sizeof(solution)];
-            strcpy(temp, solution.c_str());
-//            cm->insert(key, temp);
-            delete[]temp;
+            solution = solver->solve(key);
+            strSolution = solver->toString(solution);
+            //casting to char*, to avoid const
+            cm->insert(key, (char *) strSolution.c_str(), strSolution.length());//no +1 bytes number
         }
-        return solution;
+
+        return strSolution;
     }
 
     virtual void handleClient(int clientFD, bool *isRunning) {
@@ -43,7 +42,7 @@ public:
         string solution;
 
         while (*isRunning) {
-            isRead = read(clientFD, tempBuffer, sizeof(tempBuffer));
+            isRead = read(clientFD, tempBuffer, BUFFER_SIZE);
             if (isRead <= 0) {//error getting info from client.
                 cerr << "Couldn't read from client." << endl;
                 break;
@@ -62,7 +61,7 @@ public:
                 break;
             }
 
-            memset(tempBuffer, 0, sizeof tempBuffer);
+            memset(tempBuffer, 0,  BUFFER_SIZE);
         }
     }
 };

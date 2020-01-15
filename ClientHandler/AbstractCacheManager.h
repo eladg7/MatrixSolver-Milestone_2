@@ -13,11 +13,11 @@ public:
 protected:
     int sizeCacheList{};
     list<string> refrenceList;
-    unordered_map<string, T> mymap;
+    unordered_map<string, T*> mymap;
     string className;
     char exceptionBuffer[64] = {0};
 
-    virtual void insert(const string &key, const T &obj) {
+    virtual void insert(const string &key, T *obj,int size) {
         // not present in cache
         if (this->mymap.find(key) == this->mymap.end()) {
             // cache is full
@@ -49,7 +49,7 @@ protected:
         this->mymap[key] = obj;
     }
 
-    virtual void foreach(void (*f)(T &)) {
+    virtual void foreach(void (*f)(T* )) {
         for (const string& key:this->refrenceList) {
             f(this->mymap[key]);
         }

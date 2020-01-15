@@ -21,9 +21,9 @@ public:
 
     vector<State *> backTraceAndUpdateCost(State *s, Searchable *searchable) {
         vector<State *> route = Searcher::backTrace(s);
-        auto it = route.begin();
+
         double cost = 0;
-        for (; it < route.end(); it++) {
+        for (auto it = route.begin(); it != route.end(); it++) {
             cost += searchable->getCostToGetToNode(*it);
             (*it)->setCost(cost);
         }

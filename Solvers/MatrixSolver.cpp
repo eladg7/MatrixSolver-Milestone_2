@@ -30,10 +30,7 @@ void MatrixSolver::createProblemFromString(const string &str) {
     searchable = new MatrixMaze(mat, N, M, initial, goal);
 }
 
-string MatrixSolver::solve(const string &problem) {
-    solution.clear();
-    createProblemFromString(problem);
-    vector<State *> backtrace = searcher->search(searchable);
+string MatrixSolver::toString(const vector<State*> &backtrace) {
     for (State *s:backtrace) {
         if (*s == *searchable->getInitialState()) {
             continue;
@@ -43,4 +40,11 @@ string MatrixSolver::solve(const string &problem) {
     }
     solution = solution.substr(0, solution.length() - 2);
     return solution;
+}
+
+vector<State*> MatrixSolver::solve(const string &problem) {
+    solution.clear();
+    createProblemFromString(problem);
+    vector<State *> backtrace = searcher->search(searchable);
+    return backtrace;
 }

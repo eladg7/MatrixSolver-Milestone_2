@@ -21,18 +21,19 @@ public:
     State() { cameFrom = nullptr; }
 
     void init(string state) {
-        stateDescription = state;
+        stateDescription= state;
     }
 
     State(const State &s) {//copy
-        stateDescription = s.getDescription();
+        stateDescription= s.getDescription();
+
         cost = s.getCurrentCost();
         cameFrom = s.cameFrom;
     }
 
 
     State(string state, State *camefrom) {
-        stateDescription = state;
+        stateDescription= state;
         this->cameFrom = camefrom;
     }
 
@@ -43,7 +44,9 @@ public:
     }
 
 
-    string getDescription() const { return stateDescription; }
+    string getDescription() const {
+        return stateDescription;
+    }
 
 
     double getCurrentCost() const { return cost; }
@@ -67,12 +70,13 @@ public:
     }
 
     friend bool operator==(const State &s1, const State &s2) {
-        return s1.stateDescription == s2.stateDescription;
+        return s1.getDescription()== s2.getDescription();
     }
 
     friend bool operator!=(const State &s1, const State &s2) {
-        return s1.stateDescription != s2.stateDescription;
+        return s1.getDescription() != s2.getDescription();
     }
+
 };
 
 
