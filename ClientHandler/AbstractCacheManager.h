@@ -15,7 +15,6 @@ protected:
     list<string> refrenceList;
     unordered_map<string, T*> mymap;
     string className;
-    char exceptionBuffer[64] = {0};
 
     virtual void insert(const string &key, T *obj,int size) {
         // not present in cache

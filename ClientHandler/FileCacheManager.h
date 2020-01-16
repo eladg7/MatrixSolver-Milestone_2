@@ -45,16 +45,19 @@ public:
         }
     }
 
-    virtual T* get(const string &key) {
+    virtual T *get(const string &key) {
         string hashedKey = hashedToString(key);
-        T *obj;
+        T *obj = nullptr;
         auto iter = this->mymap.find(hashedKey);
         if (iter != this->mymap.end()) {
             obj = iter->second;
         } else {
             obj = (T *) readObjectFromFile(hashedKey);
         }
-        insert(hashedKey, obj, false);
+        if (obj != nullptr) { //not empty
+            insert(hashedKey, obj, false);
+        }
+
         return obj;
     }
 
@@ -88,6 +91,7 @@ public:
         fileObj.open(cwd + this->className + "_" + hashedKey + ".bin", ios::binary | ios::in);
         if (!fileObj) {
             cerr << "Couldn't open file to read." << endl;
+            return nullptr;
         }
 
         //get bytes in file to predict size of object
@@ -96,11 +100,12 @@ public:
         fsize = fileObj.tellg() - fsize;
         fileObj.seekg(0, std::ios::beg);
         char *obj = new char[(int) fsize + 1];
-        memset(obj, 0, (int)fsize + 1);
+        memset(obj, 0, (int) fsize + 1);
 
         if (!fileObj.read((char *) obj, fsize)) {
             cerr << "Couldn't read object from file." << endl;
-        };
+            obj= nullptr;
+        }
         try {
             fileObj.close();
         } catch (exception &e) {

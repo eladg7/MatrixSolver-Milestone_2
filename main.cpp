@@ -9,11 +9,11 @@
 
 int main() {
     MySerialServer s;
-    auto *searcher = new BestFirstSearch();
+    auto *searcher = new BreadthFirstSearch();
     auto *solver = new MatrixSolver(searcher);
     auto *cacheManager = new FileCacheManager<char>(5, typeid(MatrixSolver).name());
     MyTestClientHandler<string, vector<State*>,char> handler(solver, cacheManager);
-    if (s.open(5600, &handler)) {
+    if (s.open(5601, &handler)) {
         s.start();
         s.joinThreads();
     }
