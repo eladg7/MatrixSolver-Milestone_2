@@ -61,7 +61,7 @@ public:
                 break;
             }
 
-            memset(tempBuffer, 0,  BUFFER_SIZE);
+            memset(tempBuffer, 0, BUFFER_SIZE);
         }
     }
 };

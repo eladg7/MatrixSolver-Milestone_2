@@ -11,18 +11,17 @@
 #include "AlgoritmsTesting/NodesEvaluatedTester.h"
 
 int main() {
-    NodesEvaluatedTester::testAllMazes(10);
-//    MySerialServer s;
-//    auto *searcher = new Astar();
-//    auto *solver = new MatrixSolver(searcher);
-//    auto *cacheManager = new FileCacheManager<char>(5, typeid(MatrixSolver).name());
-//    MyTestClientHandler<string, vector<State *>, char> handler(solver, cacheManager);
-//    if (s.open(5600, &handler)) {
-//        s.start();
-//        s.joinThreads();
-//    }
-//    delete searcher;
-//    delete solver;
-//    delete cacheManager;
-//    return 0;
+    MySerialServer s;
+    auto *searcher = new BreadthFirstSearch();
+    auto *solver = new MatrixSolver(searcher);
+    auto *cacheManager = new FileCacheManager<char>(5, typeid(MatrixSolver).name());
+    MyTestClientHandler<string, vector<State*>,char> handler(solver, cacheManager);
+    if (s.open(5601, &handler)) {
+        s.start();
+        s.joinThreads();
+    }
+    delete searcher;
+    delete solver;
+    delete cacheManager;
+    return 0;
 }
