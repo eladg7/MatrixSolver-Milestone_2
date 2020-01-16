@@ -50,4 +50,6 @@ vector<State *> DepthFirstSearch::search(Searchable *searchable) {
             }
         }
     }
+
+    return {};
 }

@@ -30,19 +30,23 @@ void MatrixSolver::createProblemFromString(const string &str) {
     searchable = new MatrixMaze(mat, N, M, initial, goal);
 }
 
-string MatrixSolver::toString(const vector<State*> &backtrace) {
-    for (State *s:backtrace) {
-        if (*s == *searchable->getInitialState()) {
-            continue;
+string MatrixSolver::toString(const vector<State *> &backtrace) {
+    if (!backtrace.empty()) {
+        for (State *s:backtrace) {
+            if (*s == *searchable->getInitialState()) {
+                continue;
+            }
+            solution += searchable->getDirection(s) + " (" +
+                        to_string(s->getCurrentCost()) + "), ";
         }
-        solution += searchable->getDirection(s) + " (" +
-                    to_string(s->getCurrentCost()) + "), ";
+        solution = solution.substr(0, solution.length() - 2);
+    } else {
+        solution = NO_PATH_FOUND;
     }
-    solution = solution.substr(0, solution.length() - 2);
     return solution;
 }
 
-vector<State*> MatrixSolver::solve(const string &problem) {
+vector<State *> MatrixSolver::solve(const string &problem) {
     solution.clear();
     createProblemFromString(problem);
     vector<State *> backtrace = searcher->search(searchable);

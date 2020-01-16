@@ -31,6 +31,8 @@ public:
 
     }
 
+    virtual ~Searcher() = default;
+
 };
 
 #endif //MILESTONE_2_SEARCHER_H

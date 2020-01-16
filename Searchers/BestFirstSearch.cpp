@@ -7,7 +7,7 @@ vector<State *> BestFirstSearch::search(Searchable *searchable) {
     State *initial = searchable->getInitialState();
     initial->setCost(searchable->getCostToGetToNode(initial));
     addToQueue(initial);
-    map<string, State*> closed;
+    map<string, State *> closed;
     State goalState = searchable->getGoalState();
     while (!priorityQueue.empty()) {
         State *n = popFromQueue();
@@ -36,8 +36,8 @@ vector<State *> BestFirstSearch::search(Searchable *searchable) {
                 addToQueue(s);
             }
         }
-
     }
+    return {};
 }
 
 

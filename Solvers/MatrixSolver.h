@@ -10,6 +10,8 @@
 #include "../Searchables/MatrixMaze.h"
 #include "../StringUtils.h"
 
+#define NO_PATH_FOUND  "Could not find path to solve this problem!"
+
 class MatrixSolver : public Solver<string, vector<State *>> {
 
 private:
@@ -27,11 +29,13 @@ public:
 
     virtual vector<State *> solve(const string &problem);
 
+    virtual int getNumberOfNodesEvaluated() {
+        return this->searcher->getNumberOfNodesEvaluated();
+    }
+
     ~MatrixSolver() {
         delete searchable;
     }
-
-
 };
 
 
