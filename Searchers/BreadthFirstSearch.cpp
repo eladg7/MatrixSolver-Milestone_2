@@ -23,6 +23,7 @@ vector<State *> BreadthFirstSearch::search(Searchable *searchable) {
         }
     }
 
+    return {};
 }
 
 State *BreadthFirstSearch::popFromQueue() {

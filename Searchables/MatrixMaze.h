@@ -1,7 +1,3 @@
-//
-// Created by yekaterina on 11/01/2020.
-//
-
 #ifndef MILESTONE_2_MATRIXMAZE_H
 #define MILESTONE_2_MATRIXMAZE_H
 
