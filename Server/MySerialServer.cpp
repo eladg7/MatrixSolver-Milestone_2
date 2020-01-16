@@ -14,7 +14,7 @@ int MySerialServer::acceptClient() {
                                   (struct sockaddr *) &this->address,
                                   (socklen_t *) &len);
         if (clientSocket < 0) {
-            cerr << "Cannot connect to a new client" << endl;
+            cout << "No more clients in queue." << endl;
             return -2;
         }
 

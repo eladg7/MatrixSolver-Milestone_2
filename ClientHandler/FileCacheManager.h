@@ -55,7 +55,7 @@ public:
             obj = (T *) readObjectFromFile(hashedKey);
         }
         if (obj != nullptr) { //not empty
-            insert(hashedKey, obj, false);
+            insert(hashedKey, obj, false,0);//will not write, no need for size
         }
 
         return obj;
@@ -103,7 +103,7 @@ public:
         memset(obj, 0, (int) fsize + 1);
 
         if (!fileObj.read((char *) obj, fsize)) {
-            cerr << "Couldn't read object from file." << endl;
+            cerr << "Couldn't read file." << endl;
             obj= nullptr;
         }
         try {
