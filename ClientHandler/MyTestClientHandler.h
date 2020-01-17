@@ -64,10 +64,6 @@ public:
             memset(tempBuffer, 0, BUFFER_SIZE);
         }
     }
-
-    virtual ~MyTestClientHandler() {
-        delete solver;
-    }
 };
 
 

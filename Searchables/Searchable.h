@@ -1,3 +1,7 @@
+//
+// Created by yekaterina on 10/01/2020.
+//
+
 #ifndef MILESTONE_2_SEARCHABLE_H
 #define MILESTONE_2_SEARCHABLE_H
 
@@ -5,6 +9,7 @@
 #include "State.h"
 
 class Searchable {
+
 
 public:
     virtual State *getInitialState() = 0;

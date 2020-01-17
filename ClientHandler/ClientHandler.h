@@ -10,6 +10,15 @@ using namespace std;
 
 class ClientHandler {
 protected:
+
+    static void rnInTheEnd(char *buffer) { //make sure there is /r/n in the end
+        if (buffer[strlen(buffer) - 2] == '\r') {
+            buffer[strlen(buffer) - 2] = '\0';
+        } else if (buffer[strlen(buffer) - 1] == '\n') {
+            buffer[strlen(buffer) - 1] = '\0';
+        }
+    }
+
     static int writeToClient(int clientFD, string messages) {
         const char *message = messages.c_str();
 
@@ -24,6 +33,7 @@ protected:
 
 
         return 0;
+
     };
 
 
@@ -31,8 +41,6 @@ public:
     ClientHandler() = default;
 
     virtual void handleClient(int clientFD) = 0;
-
-    virtual ~ClientHandler() = default;
 };
 
 #endif //MILESTONE_2_CLIENTHANDLER_H
