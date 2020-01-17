@@ -19,5 +19,5 @@ add_executable(Milestone_2 main.cpp
         Searchers/DepthFirstSearch.cpp Searchers/DepthFirstSearch.h
         Solvers/MatrixSolver.h Solvers/MatrixSolver.cpp
         Searchers/Astar.h Searchers/Astar.cpp
-        AlgoritmsTesting/NodesEvaluatedTester.h AlgoritmsTesting/NodesEvaluatedTester.cpp)
+        AlgoritmsTesting/NodesEvaluatedTester.h AlgoritmsTesting/NodesEvaluatedTester.cpp Server/MyParallelServer.cpp Server/MyParallelServer.h Server/TCPServer.cpp Solvers/SolverFactory.h Searchers/SearchersFactory.h)
 

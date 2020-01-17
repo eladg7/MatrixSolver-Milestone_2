@@ -11,26 +11,28 @@ using namespace server_side;
 class MySerialServer : public TCPServer {
 private:
     queue<int> clientsSocketQueue{};
-    mutex mutexSerialServer;
+    ClientHandler *clientHandler;
 
     void runningAcceptClientThread();
 
-    void closeClientSocket();
 
 public:
+    explicit MySerialServer(ClientHandler *c) {
+        clientHandler = c;
+    }
+
     void start() override;
 
-    virtual int acceptClient();
+    virtual void popClientFromQueue(int numberClient);
 
-    bool getIsRunning() { return isRunning; }
+    virtual void pushToClientQueue(int clientSocket);
 
-    void popClientFromQueue();
+    virtual int getClientFromQueue();
 
-    int getClientFD();
+    virtual int getSizeOfQueue();
 
     static void acceptingClientThread(MySerialServer *server);
 
-    void pushToClientQueue(int clientSocket);
 };
 
 #endif //MILESTONE_2_MYSERIALSERVER_H

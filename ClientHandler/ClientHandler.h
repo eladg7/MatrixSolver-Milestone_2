@@ -38,7 +38,9 @@ protected:
 
 
 public:
-    virtual void handleClient(int clientFD, bool *isRunning) = 0;
+    ClientHandler() = default;
+
+    virtual void handleClient(int clientFD) = 0;
 };
 
 #endif //MILESTONE_2_CLIENTHANDLER_H

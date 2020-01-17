@@ -11,8 +11,6 @@ namespace server_side {
     protected:
         bool isRunning = false;
 
-        ClientHandler *clientHandler{};
-
         int socketFD{};
 
         int port{};
@@ -20,7 +18,8 @@ namespace server_side {
         vector<thread> threadsOfServer{};
 
     public:
-        virtual bool open(int port, ClientHandler *c) = 0;
+
+        virtual bool open(int port) = 0;
 
         virtual void stop() {
             this->isRunning = false;
@@ -39,6 +38,24 @@ namespace server_side {
             std::for_each(threadsOfServer.begin(), threadsOfServer.end(),
                           std::mem_fn(&std::thread::join));
         }
+
+        virtual void pushToClientQueue(int clientSocket) = 0;
+
+        virtual int getClientFromQueue() = 0;
+
+        virtual int getSizeOfQueue() = 0;
+
+        virtual void closeClientSocket(int numberClient) {
+            if (numberClient >= 0) {
+                close(numberClient);
+
+            } else {
+                cerr << "Could not close client: " + numberClient << endl;
+            }
+        }
+
+        virtual void popClientFromQueue(int numberClient) = 0;
+
         ~Server() = default;
 
     };
