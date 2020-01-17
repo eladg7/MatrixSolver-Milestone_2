@@ -48,14 +48,16 @@ public:
     virtual T *get(const string &key) {
         string hashedKey = hashedToString(key);
         T *obj = nullptr;
+        this->parallelServerLock.lock();
         auto iter = this->mymap.find(hashedKey);
         if (iter != this->mymap.end()) {
             obj = iter->second;
         } else {
             obj = (T *) readObjectFromFile(hashedKey);
         }
+        this->parallelServerLock.unlock();
         if (obj != nullptr) { //not empty
-            insert(hashedKey, obj, false,0);//will not write, no need for size
+            insert(hashedKey, obj, false, 0);//will not write, no need for size
         }
 
         return obj;
@@ -104,7 +106,7 @@ public:
 
         if (!fileObj.read((char *) obj, fsize)) {
             cerr << "Couldn't read file." << endl;
-            obj= nullptr;
+            obj = nullptr;
         }
         try {
             fileObj.close();
@@ -120,10 +122,12 @@ public:
         string hashedKey = hashedToString(key);
         bool isExist = false;
         string fileName = this->className + "_" + hashedKey + ".bin";
+        this->parallelServerLock.lock();
         auto iter = this->mymap.find(hashedKey);
         if (iter != this->mymap.end() || fexists(fileName.c_str())) {
             isExist = true;
         }
+        this->parallelServerLock.unlock();
         return isExist;
     }
 

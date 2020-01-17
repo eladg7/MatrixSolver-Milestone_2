@@ -13,11 +13,13 @@ public:
 protected:
     int sizeCacheList{};
     list<string> refrenceList;
-    unordered_map<string, T*> mymap;
+    unordered_map<string, T *> mymap;
     string className;
+    mutex parallelServerLock;
 
-    virtual void insert(const string &key, T *obj,int size) {
+    virtual void insert(const string &key, T *obj, int size) {
         // not present in cache
+        parallelServerLock.lock();
         if (this->mymap.find(key) == this->mymap.end()) {
             // cache is full
             if (this->refrenceList.size() == this->sizeCacheList) {
@@ -28,12 +30,11 @@ protected:
                 // Erase the last
                 this->mymap.erase(last);
             }
-
-        }
+        } else {
             // present in cache
-        else {
             auto it = this->refrenceList.begin();
-            while (it != this->refrenceList.end()) {
+            auto itEnd = this->refrenceList.end();
+            while (it != itEnd) {
                 if ((*it) == key) {
                     this->refrenceList.erase(it);
                     break;
@@ -46,10 +47,11 @@ protected:
         // update reference
         this->refrenceList.push_front(key);
         this->mymap[key] = obj;
+        parallelServerLock.unlock();
     }
 
-    virtual void foreach(void (*f)(T* )) {
-        for (const string& key:this->refrenceList) {
+    virtual void foreach(void (*f)(T *)) {
+        for (const string &key:this->refrenceList) {
             f(this->mymap[key]);
         }
     }
