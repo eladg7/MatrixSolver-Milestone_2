@@ -35,7 +35,6 @@ public:
 
     ~MatrixSolver() {
         delete searchable;
-        delete searcher;
     }
 };
 
