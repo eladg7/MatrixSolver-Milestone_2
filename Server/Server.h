@@ -50,13 +50,13 @@ namespace server_side {
                 close(numberClient);
 
             } else {
-                cerr << "Could not close client: " + numberClient << endl;
+                cerr << "Could not close client: " << numberClient << endl;
             }
         }
 
         virtual void popClientFromQueue(int numberClient) = 0;
 
-        ~Server() = default;
+        virtual ~Server() = default;
 
     };
 }

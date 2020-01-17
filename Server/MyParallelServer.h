@@ -17,7 +17,7 @@ private:
     void runningAcceptClientThread();
 
 public:
-    MyParallelServer(const vector<ClientHandler *> &c) {
+    explicit MyParallelServer(const vector<ClientHandler *> &c) {
         unusedHandlers = c;
     }
 
@@ -36,8 +36,6 @@ public:
     static void acceptingClientThread(MyParallelServer *server);
 
     ClientHandler *getClientHandlerFromQueue(int client);
-
-
 };
 
 

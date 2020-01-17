@@ -41,7 +41,7 @@ void MyParallelServer::runningHandleOneClient(
     handler->handleClient(clientHandlerNumber);
 
     server->closeClientSocket(clientHandlerNumber);
-    cout << &"Closed client socket, number: "[clientHandlerNumber] << endl;
+    cout << "Closed client socket, number: " << clientHandlerNumber << endl;
     server->popClientFromQueue(clientHandlerNumber);
 }
 

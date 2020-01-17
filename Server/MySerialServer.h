@@ -32,7 +32,6 @@ public:
     virtual int getSizeOfQueue();
 
     static void acceptingClientThread(MySerialServer *server);
-
 };
 
 #endif //MILESTONE_2_MYSERIALSERVER_H

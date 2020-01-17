@@ -16,10 +16,11 @@ class MatrixSolver : public Solver<string, vector<State *>> {
 
 private:
     Searcher *searcher;
-    MatrixMaze *searchable;
+    MatrixMaze *searchable{};
     string solution = "";
+
 public:
-    MatrixSolver(Searcher *s) {
+    explicit MatrixSolver(Searcher *s) {
         searcher = s;
     }
 

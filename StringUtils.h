@@ -4,11 +4,21 @@
 #include "string"
 #include <vector>
 #include <sstream>
+#include <regex>
 
 using namespace std;
 
 class StringUtils {
 public:
+    static bool matchRegex(const string &subject, const string &pattern) {
+        bool match = true;
+        if (!subject.empty() || !pattern.empty()) {
+            const regex re(pattern);
+            match = regex_match(subject, re);
+        }
+
+        return match;
+    }
 
     static bool endsWith(const std::string &str, const std::string &suffix) {
         return str.size() >= suffix.size() && 0 == str.compare(str.size() - suffix.size(), suffix.size(), suffix);
