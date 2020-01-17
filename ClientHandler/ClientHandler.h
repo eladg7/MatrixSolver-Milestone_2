@@ -22,7 +22,6 @@ protected:
         send(clientFD, copy, strlen(copy), 0);
         cout << "Message sent" << endl;
 
-
         return 0;
     };
 

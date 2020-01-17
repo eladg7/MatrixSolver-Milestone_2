@@ -1,6 +1,9 @@
 #include <algorithm>
 #include <iostream>
+#include <iomanip>
 #include "MatrixSolver.h"
+
+#define POINTS_REGEX "^\\d+,\\d+$"
 
 void MatrixSolver::createProblemFromString(const string &str) {
     vector<string> matrix = StringUtils::split(str, '\n');
@@ -10,7 +13,10 @@ void MatrixSolver::createProblemFromString(const string &str) {
     State initial;
     initial.init(matrix.back());
     matrix.pop_back();
-    //todo check regex of inital and goal, cerr if there is a problem
+    if (!StringUtils::matchRegex(initial.getDescription(), POINTS_REGEX)
+        || !StringUtils::matchRegex(goal.getDescription(), POINTS_REGEX)) {
+        throw "Could not parse initial or goal position";
+    }
     int M = (StringUtils::split(matrix.front(), ',')).size();
     int N = matrix.size();
 
@@ -36,8 +42,10 @@ string MatrixSolver::toString(const vector<State *> &backtrace) {
             if (*s == *searchable->getInitialState()) {
                 continue;
             }
+            std::stringstream stream;
+            stream << std::fixed << std::setprecision(2) << s->getCurrentCost();
             solution += searchable->getDirection(s) + " (" +
-                        to_string(s->getCurrentCost()) + "), ";
+                        stream.str() + "), ";
         }
         solution = solution.substr(0, solution.length() - 2);
     } else {
@@ -48,7 +56,12 @@ string MatrixSolver::toString(const vector<State *> &backtrace) {
 
 vector<State *> MatrixSolver::solve(const string &problem) {
     solution.clear();
-    createProblemFromString(problem);
+    try {
+        createProblemFromString(problem);
+    } catch (...) {
+        cerr << "Could not parse initial or goal position" << endl;
+        return {};
+    }
     vector<State *> backtrace = searcher->search(searchable);
     return backtrace;
 }
