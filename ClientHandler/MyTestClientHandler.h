@@ -35,13 +35,13 @@ public:
         return strSolution;
     }
 
-    virtual void handleClient(int clientFD, bool *isRunning) {
+    virtual void handleClient(int clientFD) {
         string buffer;
         char tempBuffer[BUFFER_SIZE] = {0};
         int isRead = 0;
         string solution;
 
-        while (*isRunning) {
+        while (true) {
             isRead = read(clientFD, tempBuffer, BUFFER_SIZE);
             if (isRead <= 0) {//error getting info from client.
                 cerr << "Couldn't read from client." << endl;

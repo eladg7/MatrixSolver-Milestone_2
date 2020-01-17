@@ -11,12 +11,13 @@
 #include "AlgoritmsTesting/NodesEvaluatedTester.h"
 
 int main() {
-    MySerialServer s;
-    auto *searcher = new BreadthFirstSearch();
+
+    auto *searcher = new BestFirstSearch();
     auto *solver = new MatrixSolver(searcher);
     auto *cacheManager = new FileCacheManager<char>(5, typeid(MatrixSolver).name());
-    MyTestClientHandler<string, vector<State*>,char> handler(solver, cacheManager);
-    if (s.open(5601, &handler)) {
+    ClientHandler *handler = new MyTestClientHandler<string, vector<State *>, char>(solver, cacheManager);
+    MySerialServer s(handler);
+    if (s.open(5600)) {
         s.start();
         s.joinThreads();
     }
