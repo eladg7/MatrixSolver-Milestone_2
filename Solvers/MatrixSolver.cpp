@@ -15,7 +15,8 @@ void MatrixSolver::createProblemFromString(const string &str) {
     matrix.pop_back();
     if (!StringUtils::matchRegex(initial.getDescription(), POINTS_REGEX)
         || !StringUtils::matchRegex(goal.getDescription(), POINTS_REGEX)) {
-        throw "Could not parse initial or goal position";
+        throw "Could not parse initial or goal position: " + initial.getDescription()
+              + " ," + goal.getDescription();
     }
     int M = (StringUtils::split(matrix.front(), ',')).size();
     int N = matrix.size();

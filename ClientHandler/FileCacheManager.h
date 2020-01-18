@@ -36,7 +36,7 @@ public:
         insert(key, obj, true, size);
     }
 
-    void insert(const string &key, T *obj, bool toWrite, int size) {
+    void insert(const string key, T *obj, bool toWrite, int size) {
         string hashedKey = hashedToString(key);
 
         AbstractCacheManager<T>::insert(hashedKey, obj, size);
@@ -134,6 +134,10 @@ public:
     bool fexists(const char *filename) {
         std::ifstream ifile(filename);
         return (bool) ifile;
+    }
+
+    virtual ~FileCacheManager() {
+
     }
 };
 

@@ -55,6 +55,7 @@ int TCPServer::acceptClient() {
 
         cout << "Connection successful" << endl;
         pushToClientQueue(clientSocket);
+        increseSizeOfQueue();
 
         return 0;
     }
