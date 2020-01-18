@@ -31,10 +31,12 @@ public:
 
     virtual int getSizeOfQueue();
 
-    virtual void increseSizeOfQueue(){}
-    virtual void decreseSizeOfQueue(){}
+    virtual void increseSizeOfQueue() {}
+
+    virtual void decreseSizeOfQueue() {}
 
     static void acceptingClientThread(MySerialServer *server);
+
 };
 
 #endif //MILESTONE_2_MYSERIALSERVER_H

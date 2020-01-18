@@ -17,6 +17,7 @@ int boot::Main::main(unsigned int port) {
     }
     delete searcher;
     delete solver;
+    delete handler;
     delete cacheManager;
     delete s;
     return 0;
@@ -33,9 +34,15 @@ int boot::ParallelServerMain::main(unsigned int port) {
 //    MySerialServer s(handler);
 
     vector<ClientHandler *> handlerVector;
+    vector<Searcher *> searchers;
+    vector<MatrixSolver *> solvers;
     for (int i = 0; i < MAX_CONNECTED; i++) {
         auto *searcher = new BestFirstSearch();
+        searchers.push_back(searcher);
+
         auto *solver = new MatrixSolver(searcher);
+        solvers.push_back(solver);
+
         ClientHandler *handler = new MyTestClientHandler<string, vector<State *>, char>(solver, cacheManager);
         handlerVector.push_back(handler);
     }
@@ -47,6 +54,14 @@ int boot::ParallelServerMain::main(unsigned int port) {
 
     delete cacheManager;
     for (int i = 0; i < MAX_CONNECTED; i++) {
+        auto *searcher = searchers.back();
+        searchers.pop_back();
+        delete searcher;
+
+        auto *solver = solvers.back();
+        solvers.pop_back();
+        delete solver;
+
         ClientHandler *handler = handlerVector.back();
         handlerVector.pop_back();
         delete handler;
@@ -68,7 +83,9 @@ int boot::SerialServerMain::main(unsigned int port) {
         s.start();
         s.joinThreads();
     }
+    delete searcher;
     delete solver;
+    delete handler;
     delete cacheManager;
     return 0;
 }

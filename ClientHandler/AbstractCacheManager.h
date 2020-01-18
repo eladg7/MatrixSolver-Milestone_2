@@ -17,7 +17,8 @@ protected:
     string className;
     mutex parallelServerLock;
 
-    virtual void insert(const string &key, T *obj, int size) {
+    virtual void insert(const string key, T *obj, int size) {
+
         // not present in cache
         parallelServerLock.lock();
         if (this->mymap.find(key) == this->mymap.end()) {
@@ -53,6 +54,15 @@ protected:
     virtual void foreach(void (*f)(T *)) {
         for (const string &key:this->refrenceList) {
             f(this->mymap[key]);
+        }
+    }
+
+    virtual ~AbstractCacheManager() {
+
+        auto it = mymap.begin();
+        while (it != mymap.end()) {
+            delete it->second;
+            it++;
         }
     }
 

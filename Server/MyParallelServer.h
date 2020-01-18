@@ -43,6 +43,7 @@ public:
     static void acceptingClientThread(MyParallelServer *server);
 
     ClientHandler *getClientHandlerFromQueue(int client);
+
 };
 
 

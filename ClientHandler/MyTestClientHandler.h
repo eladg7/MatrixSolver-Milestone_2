@@ -5,7 +5,7 @@
 #include "ClientHandler.h"
 #include "../StringUtils.h"
 
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 4096
 
 template<typename P, typename S, typename T>
 class MyTestClientHandler : public ClientHandler {
@@ -28,8 +28,10 @@ public:
         } else {
             solution = solver->solve(key);
             strSolution = solver->toString(solution);
+            char *copy = new char[strSolution.length() + 1];
+            strcpy(copy, strSolution.c_str());
             //casting to char*, to avoid const
-            cm->insert(key, (char *) strSolution.c_str(), strSolution.length());//no +1 bytes number
+            cm->insert(key, copy, strSolution.length());//no +1 bytes number
         }
 
         return strSolution;
@@ -65,9 +67,6 @@ public:
         }
     }
 
-    virtual ~MyTestClientHandler() {
-        delete solver;
-    }
 };
 
 
