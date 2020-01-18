@@ -68,7 +68,6 @@ int boot::SerialServerMain::main(unsigned int port) {
         s.start();
         s.joinThreads();
     }
-    delete searcher;
     delete solver;
     delete cacheManager;
     return 0;

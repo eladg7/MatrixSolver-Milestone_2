@@ -44,6 +44,8 @@ namespace server_side {
         virtual int getClientFromQueue() = 0;
 
         virtual int getSizeOfQueue() = 0;
+        virtual void increseSizeOfQueue() = 0;
+        virtual void decreseSizeOfQueue() = 0;
 
         virtual void closeClientSocket(int numberClient) {
             if (numberClient >= 0) {

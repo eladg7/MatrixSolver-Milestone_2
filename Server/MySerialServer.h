@@ -31,6 +31,9 @@ public:
 
     virtual int getSizeOfQueue();
 
+    virtual void increseSizeOfQueue(){}
+    virtual void decreseSizeOfQueue(){}
+
     static void acceptingClientThread(MySerialServer *server);
 };
 

@@ -23,9 +23,9 @@ void MySerialServer::runningAcceptClientThread() {
         int clientSocket = getClientFromQueue();
         clientHandler->handleClient(clientSocket);
 
+        popClientFromQueue(clientSocket);
         closeClientSocket(clientSocket);
         cout << "Closed client socket." << endl;
-        popClientFromQueue(clientSocket);
         usleep(5000);
     }
 }

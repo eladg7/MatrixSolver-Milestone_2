@@ -13,6 +13,7 @@ class MyParallelServer : public TCPServer {
 private:
     unordered_map<int, ClientHandler *> clientsMap;
     vector<ClientHandler *> unusedHandlers;
+    int sizeOfWaitingClients = 0;
 
     void runningAcceptClientThread();
 
@@ -32,6 +33,12 @@ public:
     virtual int getClientFromQueue();
 
     virtual int getSizeOfQueue();
+     int getSizeOfInProgress();
+
+
+    virtual void increseSizeOfQueue();
+
+    virtual void decreseSizeOfQueue();
 
     static void acceptingClientThread(MyParallelServer *server);
 
