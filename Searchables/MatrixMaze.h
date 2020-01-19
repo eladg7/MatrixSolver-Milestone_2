@@ -79,31 +79,20 @@ public:
     }
 
     double getHeuristic(State *state) {
-        double cost = 0;
+        double cost = 1;
         if (state != nullptr) {
             vector<int> place = getPlacementOfNodeInMatrix(state);
 
             auto goalState = getGoalState();
             vector<int> goalPlace = getPlacementOfNodeInMatrix(&goalState);
+            vector<int> initialPlace = getPlacementOfNodeInMatrix(this->initial);
 
-            double dx = abs(place.at(0) - goalPlace.at(0));
-            double dy = abs(place.at(1) - goalPlace.at(1));
-            vector<State *> neighbors = getAllPossibleStates(state);
-            if (!neighbors.empty()) {
-                auto minValue = neighbors.at(0)->getCurrentCost();
-                for (int i = 1; i < neighbors.size(); i++) {
-                    auto currentCost = neighbors.at(i)->getCurrentCost();
-                    if (currentCost != (1.0 / 0.0) && currentCost < minValue) {
-                        minValue = currentCost;
-                    }
-                }
-
-                //  multiply it only if it's not infinity
-                if (minValue != (1.0 / 0.0)) {
-                    cost *= minValue;
-                }
-
-            }
+            double dx1 = abs(place.at(0) - goalPlace.at(0));
+            double dy1 = abs(place.at(1) - goalPlace.at(1));
+            double dx2 = abs(initialPlace.at(0) - goalPlace.at(0));
+            double dy2 = abs(initialPlace.at(1) - goalPlace.at(1));
+            double cross = abs(dx1 * dy2 - dx2 * dy1);
+            cost = cross * 0.001;
         }
         return cost;
     }
