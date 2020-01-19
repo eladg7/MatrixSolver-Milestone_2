@@ -89,6 +89,5 @@ vector<State *> MatrixSolver::solve(const string &problem) {
     }
 
     vector<State *> backtrace = searcher->search(searchable);
-    cout << getNumberOfNodesEvaluated() << endl;
     return backtrace;
 }
