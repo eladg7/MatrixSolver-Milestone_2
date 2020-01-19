@@ -25,7 +25,7 @@ vector<State *> Astar::search(Searchable *searchable) {
 
     // For node n, fScore[n] := gScore[n] + h(n).
     map<State *, double> fScore;
-    fScore[initialState] = searchable->getHeuristic(initialState);
+    fScore[initialState] = gScore[initialState] + searchable->getHeuristic(initialState);
 
     State current;
     double tentative_gScore = 0;
