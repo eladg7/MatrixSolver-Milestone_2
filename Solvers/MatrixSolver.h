@@ -19,6 +19,8 @@ private:
     MatrixMaze *searchable{};
     string solution = "";
 
+    static bool areInitialAndGoalValid(const State &initial, const State &goal, int N, int M);
+
 public:
     explicit MatrixSolver(Searcher *s) {
         searcher = s;

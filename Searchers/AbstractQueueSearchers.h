@@ -24,6 +24,8 @@ public:
     virtual int getNumberOfNodesEvaluated() {
         return numberOfNodes;
     }
+
+    virtual ~AbstractQueueSearchers() = default;
 };
 
 #endif //MILESTONE_2_ABSTRACTQUEUESEARCHERS_H
