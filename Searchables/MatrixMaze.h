@@ -86,13 +86,14 @@ public:
             auto goalState = getGoalState();
             vector<int> goalPlace = getPlacementOfNodeInMatrix(&goalState);
             vector<int> initialPlace = getPlacementOfNodeInMatrix(this->initial);
-
-            double dx1 = abs(place.at(0) - goalPlace.at(0));
-            double dy1 = abs(place.at(1) - goalPlace.at(1));
-            double dx2 = abs(initialPlace.at(0) - goalPlace.at(0));
-            double dy2 = abs(initialPlace.at(1) - goalPlace.at(1));
-            double cross = abs(dx1 * dy2 - dx2 * dy1);
-            cost = cross * 0.001;
+            if (!goalPlace.empty() && !initialPlace.empty()) {
+                double dx1 = abs(place.at(0) - goalPlace.at(0));
+                double dy1 = abs(place.at(1) - goalPlace.at(1));
+                double dx2 = abs(initialPlace.at(0) - goalPlace.at(0));
+                double dy2 = abs(initialPlace.at(1) - goalPlace.at(1));
+                double cross = abs(dx1 * dy2 - dx2 * dy1);
+                cost = cross * 0.001;
+            }
         }
         return cost;
     }

@@ -22,6 +22,8 @@ private:
     static tuple<string, double> getLowest(tuple<double, int> astarLowest, tuple<double, int> BestFSLowest,
                                            tuple<double, int> BFSLowest, tuple<double, int> DFSLowest);
 
+    static vector<string> getMatrixFromFile(vector<string> filesNames);
+
 public:
     static void testAllMazes(unsigned int timesPerAlgorithm);
 
