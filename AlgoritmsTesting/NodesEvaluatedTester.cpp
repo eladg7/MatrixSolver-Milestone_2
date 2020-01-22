@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "NodesEvaluatedTester.h"
 #include "../Searchers/BestFirstSearch.h"
 #include "../Searchers/BreadthFirstSearch.h"
@@ -8,10 +9,13 @@ void NodesEvaluatedTester::testAllMazes(unsigned int timesPerAlgorithm) {
     auto *searcher = new Astar();
     auto *solver = new MatrixSolver(searcher);
 
-    vector<string> mazes;
-    for (int i = 10; i <= 50; i++) {
-        mazes.push_back(generateMaze(i, i));
-    }
+    vector<string> mazes = getMatrixFromFile(
+            {"Matrix1.txt", "Matrix2.txt", "Matrix3.txt", "Matrix4.txt", "Matrix5.txt",
+             "Matrix6.txt", "Matrix7.txt", "Matrix8.txt", "Matrix9.txt", "Matrix10.txt"});
+//    for (int i = 10; i <= 50; i++) {
+//        mazes.push_back(generateMaze(i, i));
+//    }
+
 
     tuple<double, int> astarLowest;
     tuple<double, int> BestFSLowest;
@@ -26,6 +30,34 @@ void NodesEvaluatedTester::testAllMazes(unsigned int timesPerAlgorithm) {
     }
 
     delete solver;
+}
+
+vector<string> NodesEvaluatedTester::getMatrixFromFile(vector<string> filesNames) {
+    vector<string> result;
+    string temp;
+    string line;
+    ifstream infile;
+    while (!filesNames.empty()) {
+        infile.open(filesNames.back(), ifstream::in);
+        if (infile.is_open()) {
+            while (getline(infile, line)) {
+                temp += line;
+                temp += "\n";
+            }
+            if (!temp.empty()) {
+                temp.pop_back();
+                StringUtils::eraseAllSubStr(temp, "\nend");
+                result.push_back(temp);
+            }
+            temp.clear();
+            infile.close();
+        }
+        filesNames.pop_back();
+    }
+
+    //  reverse i because we read it from the end to beginning
+    reverse(result.begin(), result.end());
+    return result;
 }
 
 tuple<string, double> NodesEvaluatedTester::getLowest(tuple<double, int> astarLowest, tuple<double, int> BestFSLowest,
@@ -80,7 +112,6 @@ tuple<double, int> NodesEvaluatedTester::getMazeSolvingCost(string &maze, Search
     }
 
     delete solver;
-    delete searcher;
     return cost;
 }
 
