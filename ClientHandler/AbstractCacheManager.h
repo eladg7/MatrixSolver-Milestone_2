@@ -65,7 +65,6 @@ protected:
             it++;
         }
     }
-
 };
 
 #endif //MILESTONE_2_ABSTRACTCACHEMANAGER_H

@@ -37,7 +37,7 @@ int boot::ParallelServerMain::main(unsigned int port) {
     vector<Searcher *> searchers;
     vector<MatrixSolver *> solvers;
     for (int i = 0; i < MAX_CONNECTED; i++) {
-        auto *searcher = new BestFirstSearch();
+        auto *searcher = new Astar();
         searchers.push_back(searcher);
 
         auto *solver = new MatrixSolver(searcher);

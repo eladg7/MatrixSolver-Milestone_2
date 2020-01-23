@@ -31,8 +31,9 @@ public:
 
     }
 
-    virtual ~Searcher() = default;
+    virtual string getTypeAsString() = 0;
 
+    virtual ~Searcher() = default;
 };
 
 #endif //MILESTONE_2_SEARCHER_H

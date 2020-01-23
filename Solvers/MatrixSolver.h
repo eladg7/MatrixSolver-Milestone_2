@@ -36,6 +36,10 @@ public:
         return this->searcher->getNumberOfNodesEvaluated();
     }
 
+    virtual string getSearcherName() {
+        return this->searcher->getTypeAsString();
+    }
+
     ~MatrixSolver() {
         delete searchable;
     }

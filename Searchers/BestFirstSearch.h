@@ -11,7 +11,9 @@ class BestFirstSearch : public AbstractQueueSearchers {
 public:
     virtual vector<State *> search(Searchable *searchable);
 
-    virtual ~BestFirstSearch() = default;
+    virtual string getTypeAsString() {
+        return "BestFS_SEARCHER";
+    }
 };
 
 

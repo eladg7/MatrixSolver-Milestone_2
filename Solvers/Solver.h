@@ -15,6 +15,7 @@ public:
 
     virtual S solve(const P &problem) = 0;
 
+    virtual string getSearcherName() = 0;
 };
 
 #endif //MILESTONE_2_SOLVER_H

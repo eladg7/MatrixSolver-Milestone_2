@@ -12,7 +12,7 @@ using namespace std;
 
 class NodesEvaluatedTester {
 private:
-    static tuple<double, int> getMazeSolvingCost(string &maze, Searcher *searcher);
+    static tuple<double, int> getMazeSolvingCost(string &maze, Searcher *searcher, int size);
 
     static string generateMaze(int N, int M);
 
@@ -23,6 +23,8 @@ private:
                                            tuple<double, int> BFSLowest, tuple<double, int> DFSLowest);
 
     static vector<string> getMatrixFromFile(vector<string> filesNames);
+
+    static void createSolutionFile(const string &solution, const string &searcherName, const string &dimension);
 
 public:
     static void testAllMazes(unsigned int timesPerAlgorithm);
