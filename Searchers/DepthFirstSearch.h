@@ -20,6 +20,10 @@ public:
     virtual vector<State *> search(Searchable *searchable);
 
     int getNumberOfNodesEvaluated() { return numberOfNodes; }
+
+    virtual string getTypeAsString() {
+        return "DFS_SEARCHER";
+    }
 };
 
 

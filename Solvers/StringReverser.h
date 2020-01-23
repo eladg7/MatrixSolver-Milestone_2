@@ -33,6 +33,10 @@ public:
 
         return result;
     }
+
+    virtual string getSearcherName() {
+        return "";
+    }
 };
 
 #endif //MILESTONE_2_STRINGREVERSER_H

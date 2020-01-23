@@ -19,19 +19,24 @@ public:
         cm = cache;
     }
 
+    virtual string getSearcherName() {
+        return this->solver->getSearcherName();
+    }
+
     string getSolutionFromKey(string &key) {
         S solution;
         string strSolution;
         StringUtils::eraseAllSubStr(key, "\r");
-        if (cm->keyExist(key)) {
-            strSolution = cm->get(key);
+        string temp = getSearcherName() + "_" + key;
+        if (cm->keyExist(temp)) {
+            strSolution = cm->get(temp);
         } else {
             solution = solver->solve(key);
             strSolution = solver->toString(solution);
             char *copy = new char[strSolution.length() + 1];
             strcpy(copy, strSolution.c_str());
             //casting to char*, to avoid const
-            cm->insert(key, copy, strSolution.length());//no +1 bytes number
+            cm->insert(temp, copy, strSolution.length()); //no +1 bytes number
         }
 
         return strSolution;
@@ -64,6 +69,7 @@ public:
             }
 
             memset(tempBuffer, 0, BUFFER_SIZE);
+            usleep(5000);
         }
     }
 

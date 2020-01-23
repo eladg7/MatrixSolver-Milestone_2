@@ -19,6 +19,10 @@ public:
     virtual vector<State *> search(Searchable *searchable);
 
     virtual int getNumberOfNodesEvaluated();
+
+    virtual string getTypeAsString() {
+        return "Astar_SEARCHER";
+    }
 };
 
 #endif //MILESTONE_2_ASTAR_H

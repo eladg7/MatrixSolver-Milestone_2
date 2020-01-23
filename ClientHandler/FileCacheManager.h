@@ -136,9 +136,7 @@ public:
         return (bool) ifile;
     }
 
-    virtual ~FileCacheManager() {
-
-    }
+    virtual ~FileCacheManager() = default;
 };
 
 

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <unistd.h>
 #include "NodesEvaluatedTester.h"
 #include "../Searchers/BestFirstSearch.h"
 #include "../Searchers/BreadthFirstSearch.h"
@@ -21,12 +22,14 @@ void NodesEvaluatedTester::testAllMazes(unsigned int timesPerAlgorithm) {
     tuple<double, int> BestFSLowest;
     tuple<double, int> BFSLowest;
     tuple<double, int> DFSLowest;
+    vector<int> size = {50, 47, 45, 40, 35, 30, 25, 20, 15, 10};
     for (auto maze : mazes) {
-        astarLowest = getMazeSolvingCost(maze, new Astar());
-        BestFSLowest = getMazeSolvingCost(maze, new BestFirstSearch());
-        BFSLowest = getMazeSolvingCost(maze, new BreadthFirstSearch());
-        DFSLowest = getMazeSolvingCost(maze, new DepthFirstSearch());
+        astarLowest = getMazeSolvingCost(maze, new Astar(), size.back());
+        BestFSLowest = getMazeSolvingCost(maze, new BestFirstSearch(), size.back());
+        BFSLowest = getMazeSolvingCost(maze, new BreadthFirstSearch(), size.back());
+        DFSLowest = getMazeSolvingCost(maze, new DepthFirstSearch(), size.back());
         printResults(astarLowest, BestFSLowest, BFSLowest, DFSLowest);
+        size.pop_back();
     }
 
     delete solver;
@@ -100,19 +103,43 @@ void NodesEvaluatedTester::printResults(tuple<double, int> astarLowest, tuple<do
          << endl;
 }
 
-tuple<double, int> NodesEvaluatedTester::getMazeSolvingCost(string &maze, Searcher *searcher) {
+tuple<double, int> NodesEvaluatedTester::getMazeSolvingCost(string &maze, Searcher *searcher, int size) {
     auto solver = new MatrixSolver(searcher);
     auto pathCost = solver->solve(maze);
     int lowest = solver->getNumberOfNodesEvaluated();
     tuple<double, int> cost;
     if (!pathCost.empty()) {
         cost = make_tuple(pathCost.back()->getCurrentCost(), lowest);
+        auto temp = to_string(size) + "x" + to_string(size);
+        createSolutionFile(solver->toString(pathCost), solver->getSearcherName(), temp);
     } else {
         cost = make_tuple(numeric_limits<int>::max(), lowest);
     }
 
     delete solver;
     return cost;
+}
+
+void NodesEvaluatedTester::createSolutionFile(const string &solution,
+                                              const string &searcherName, const string &dimension) {
+    if (!solution.empty()) {
+        ofstream fileObj;
+
+        char cwd[256] = {0};
+        getcwd(cwd, sizeof(cwd));
+        strcat(cwd, "/");
+        fileObj.open(cwd + searcherName + "_" + dimension + ".bin", ios::binary | ios::out);
+        if (!fileObj) {
+            throw "Error creating file.";
+        }
+
+        fileObj.write((char *) solution.c_str(), solution.length());
+        try {
+            fileObj.close();
+        } catch (exception &e) {
+            throw "Couldn't close file.";
+        }
+    }
 }
 
 string NodesEvaluatedTester::generateMaze(int N, int M) {

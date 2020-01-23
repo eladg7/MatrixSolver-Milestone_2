@@ -25,11 +25,13 @@ protected:
         return 0;
     };
 
-
+    string searcherName{};
 public:
     ClientHandler() = default;
 
     virtual void handleClient(int clientFD) = 0;
+
+    virtual string getSearcherName() = 0;
 
     virtual ~ClientHandler() = default;
 };

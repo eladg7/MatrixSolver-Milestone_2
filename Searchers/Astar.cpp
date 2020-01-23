@@ -56,7 +56,7 @@ vector<State *> Astar::search(Searchable *searchable) {
                 neighbor->setCameFrom(currentStatePointer);
                 gScore[neighbor] = tentative_gScore;
                 fScore[neighbor] = gScore[neighbor] + searchable->getHeuristic(neighbor);
-                neighbor->setCost(fScore[neighbor]);
+                neighbor->setCost(gScore[neighbor]);
                 if (!openSet.contains(*neighbor)) {
                     openSet.push(*neighbor);
                     currentStates.push_back(neighbor);
