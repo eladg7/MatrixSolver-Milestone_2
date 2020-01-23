@@ -1,0 +1,986 @@
+commit 5bf7b01405265b386c2d4dd093811d47dbe5c318
+Merge: 6b0ac27 c143d59
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 23 11:39:28 2020 +0200
+
+    Merge pull request #57 from eladg7/updating_solver_type_name
+    
+    updating solver type name & small astar fix
+
+commit c143d59ff701b58567ee00659bfc7fe21523b916
+Author: elad <eladgarber@gmail.com>
+Date:   Thu Jan 23 11:38:55 2020 +0200
+
+    updating solver type name & small astar fix
+
+commit 6b0ac27050b859bea7875383c6599fe7066b7e8e
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 23 11:36:13 2020 +0200
+
+    Add files via upload
+
+commit 52c3130a70c9a65c33d45155760ca4e8603116d5
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 23 11:35:43 2020 +0200
+
+    Delete asd.txt
+
+commit 9bc3bd68f5677cafc6752508e2cd700959576a2a
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 23 11:35:25 2020 +0200
+
+    Add files via upload
+
+commit 67d17bca65cb7e3cebcfe535480271a00c656806
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 23 11:34:52 2020 +0200
+
+    Add files via upload
+
+commit dfed82c81bb0e95e3ebc95b9b332ea537af9baed
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 23 11:33:45 2020 +0200
+
+    Add files via upload
+
+commit 4bdb5084f9acc4458ac0ba62369bce60dd12c02d
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 23 11:29:38 2020 +0200
+
+    Create asd.txt
+
+commit 87a4c6ea7292af11bdf1d91f8288c171f7de43fd
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 23 10:16:36 2020 +0200
+
+    Add files via upload
+
+commit c70efcf5ba5534c5affb859cc9db7f1a27d83fec
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Wed Jan 22 23:18:52 2020 +0200
+
+    Add files via upload
+
+commit 248cbb06a95b9d14b7a13e2887ecc1c2d7ae83d2
+Merge: 4c56a9c 2cbc84f
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Wed Jan 22 23:17:19 2020 +0200
+
+    Merge pull request #56 from eladg7/updating_matrix_tests
+    
+    updating nodes evaluate to read from file
+
+commit 4c56a9c2036e1644fce5b857e1f841d8ff5d62a1
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Wed Jan 22 23:16:54 2020 +0200
+
+    Delete lowest nodes evaluated graph.pdf
+
+commit 26caada35117ad2b19ca2a604686eda9c4fa9ba1
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Wed Jan 22 23:16:45 2020 +0200
+
+    Delete lowest cost graph.pdf
+
+commit 2cbc84fd315d1298c32a8025c45ecce658da82d7
+Author: elad <eladgarber@gmail.com>
+Date:   Wed Jan 22 23:16:15 2020 +0200
+
+    updating nodes evaluate to read from file
+
+commit a8f5eb16ff274b0eff046e13d60c70725438bb89
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Sun Jan 19 20:45:14 2020 +0200
+
+    Add files via upload
+
+commit d74e06d2c2f929ae0d7f3ac429fde4e2a0dc8b3a
+Merge: b9d1cbb 3b87178
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Sun Jan 19 20:44:29 2020 +0200
+
+    Merge pull request #55 from eladg7/fixing_astar_heuristic
+    
+    fixing heuristic function
+
+commit 3b87178eb57c57c2a8ddd35b7c83735d255e7dba
+Author: elad <eladgarber@gmail.com>
+Date:   Sun Jan 19 20:44:04 2020 +0200
+
+    fixing heuristic function
+
+commit b9d1cbb5a81efa0edd8c4aadc745f897bef02792
+Merge: f0335b1 395759b
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Sun Jan 19 19:48:02 2020 +0200
+
+    Merge pull request #54 from eladg7/fixing_nodes_evaluation_prints
+    
+    deleting nodes evaluation prints
+
+commit 395759b2cfc31ae3457cc7076ca1e01ced7184cb
+Author: elad <eladgarber@gmail.com>
+Date:   Sun Jan 19 19:47:28 2020 +0200
+
+    deleting nodes evaluation prints
+
+commit f0335b12e6fe87d7b3c66675446550949e083b24
+Merge: c58013e a03e2a8
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Sun Jan 19 19:40:24 2020 +0200
+
+    Merge pull request #53 from eladg7/updating_initial&goal_check
+    
+    Validating initial and goal position
+
+commit a03e2a8bd6e8eade3848db2bf15b151dc6fe8f01
+Author: elad <eladgarber@gmail.com>
+Date:   Sun Jan 19 19:39:48 2020 +0200
+
+    Validating initial and goal position
+
+commit c58013ebd5f0e997a928edf3049388e979daa1c7
+Merge: 45bf93d 11a2ba9
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Sat Jan 18 21:34:02 2020 +0200
+
+    Merge pull request #52 from eladg7/fixss
+    
+    fixss
+
+commit 11a2ba9289cd4cf7b136a9eb689b62587d804823
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Sat Jan 18 21:33:31 2020 +0200
+
+    parlaller
+
+commit 0e78440aa7c256f285bb17ed01c9297d48e9530d
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Sat Jan 18 20:14:52 2020 +0200
+
+    fix
+
+commit 45bf93da84b8c3aabdcbda838a901bbcadeb6be6
+Merge: 33bd311 a00aecc
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Fri Jan 17 21:54:40 2020 +0200
+
+    Merge pull request #51 from eladg7/updating_stuff
+    
+    creating boot
+
+commit a00aecc27fa051e2ee8b2e7823c554b0c6e53073
+Author: elad <eladgarber@gmail.com>
+Date:   Fri Jan 17 21:08:15 2020 +0200
+
+    creating boot
+
+commit 33bd311d2bec1e8686c20e4f08a731ce0d998573
+Merge: 33c78da 4969258
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Fri Jan 17 19:08:24 2020 +0200
+
+    Merge pull request #49 from eladg7/updating_main
+    
+    updating locks and dtors
+
+commit 49692583d95e4e37dabf9c721d6e60cf0c1b454f
+Author: elad <eladgarber@gmail.com>
+Date:   Fri Jan 17 19:07:47 2020 +0200
+
+    creating algorithms testing
+
+commit 33c78da60098469d9e61eb5843832844325c3b32
+Merge: db939c7 48a4628
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Fri Jan 17 17:34:15 2020 +0200
+
+    Merge pull request #48 from eladg7/parallel
+    
+    parlaller
+
+commit 48a46283172fcbc4b2dac8d8430dd07ed11591ec
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Fri Jan 17 17:33:23 2020 +0200
+
+    parlaller
+
+commit db939c7f7c895e9964bfd8e54b900a43c94e03c8
+Merge: 57b19f6 8ed1a18
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 16 11:48:17 2020 +0200
+
+    Merge pull request #47 from eladg7/creating_algprithms_testing
+    
+    creating algorithms testing
+
+commit 8ed1a18ebef30f855dfebd40c85d8dfe3f886fdf
+Merge: c5c1ff9 57b19f6
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 16 11:48:09 2020 +0200
+
+    Merge branch 'master' into creating_algprithms_testing
+
+commit c5c1ff9296abb6ef7995e04295337591f7a341cb
+Author: elad <eladgarber@gmail.com>
+Date:   Thu Jan 16 11:47:26 2020 +0200
+
+    creating algorithms testing
+
+commit 57b19f673ca458b9dceaaf840155158c40ee3be7
+Merge: 176cf19 b7ddace
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Thu Jan 16 10:58:11 2020 +0200
+
+    Merge pull request #46 from eladg7/chahce2
+    
+    chache works perfectly
+
+commit b7ddace752cd018b0f20d9a321d140b647e014e3
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Thu Jan 16 10:57:22 2020 +0200
+
+    chache works perfectly
+
+commit 176cf198ddcac3a6e890210adf843702bfce77de
+Merge: a9e1186 a1327d7
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Thu Jan 16 10:36:55 2020 +0200
+
+    Merge pull request #45 from eladg7/fix
+    
+    chache
+
+commit a1327d7b39422c7b1be6db78af6f94303ef73e06
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Thu Jan 16 10:35:50 2020 +0200
+
+    chache
+
+commit a9e11862baa096c518864f1ec1ef4d106727abfb
+Merge: 9bf7855 289e3df
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Wed Jan 15 21:47:44 2020 +0200
+
+    Merge pull request #44 from eladg7/updating_astar
+    
+    fixing Astar heuristic
+
+commit 289e3dfdba8a63df8157fff9b7d8cd2125024581
+Merge: 2dc6fe5 9bf7855
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Wed Jan 15 21:47:37 2020 +0200
+
+    Merge branch 'master' into updating_astar
+
+commit 2dc6fe5aa8c242dbe8054b76bfd080feb8717ede
+Author: elad <eladgarber@gmail.com>
+Date:   Wed Jan 15 21:46:49 2020 +0200
+
+    fixing Astar heuristic
+
+commit 9bf785555d1d749a0f6f113fcf3e3c26e23656d1
+Merge: bd6c448 9ffa734
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Wed Jan 15 18:23:26 2020 +0200
+
+    Merge pull request #43 from eladg7/minorChanges
+    
+    minor changes
+
+commit 9ffa73477d5f13746de4a564b56f0ce22dae228e
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Wed Jan 15 18:22:59 2020 +0200
+
+    minor changes
+
+commit bd6c44891f6c56179c84d1d04831abb6e3834766
+Merge: c46ba04 e1b31f4
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Tue Jan 14 22:35:50 2020 +0200
+
+    Merge pull request #42 from eladg7/notesToCache
+    
+    notesToCache
+
+commit e1b31f46a687653852148a97a725c8c1fc798274
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Tue Jan 14 22:32:52 2020 +0200
+
+    notes
+
+commit c46ba0402a915f63a56c1cf7dede602ccbbd8ad4
+Merge: 35914e1 bd24cd9
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Tue Jan 14 22:27:22 2020 +0200
+
+    Merge pull request #41 from eladg7/fixing_cache_manager
+    
+    cahce works
+
+commit bd24cd9ead111e700fa03b33283980a193f4cd4c
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Tue Jan 14 22:26:12 2020 +0200
+
+    cahce works
+
+commit 35914e1bffebe5626efdc9bbb8940b4af26992ba
+Merge: 79d7474 6c653e4
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Mon Jan 13 23:29:51 2020 +0200
+
+    Merge pull request #40 from eladg7/updating_cache_manager
+    
+    fixing buffer bug
+
+commit 6c653e4602185875a2f1eb93fde2069a4521489f
+Author: elad <eladgarber@gmail.com>
+Date:   Mon Jan 13 23:29:20 2020 +0200
+
+    fixing buffer bug
+
+commit 79d7474801bb9bebe08ed70bc2d0ef2e743e3ad9
+Merge: 988647a e752b47
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Mon Jan 13 22:34:38 2020 +0200
+
+    Merge pull request #39 from eladg7/dfs_update
+    
+    dfs update
+
+commit e752b4784b95df019008659a8956ab556d91b060
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Mon Jan 13 22:33:28 2020 +0200
+
+    dfs update
+
+commit 988647a1b5dcda9484cb1fcee49053bcf5b3abda
+Merge: 7a89c18 fcdebd9
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Mon Jan 13 20:52:29 2020 +0200
+
+    Merge pull request #38 from eladg7/astar_updating_number_of_nodes_evaluated
+    
+    astar_updating_number_of_nodes_evaluated
+
+commit fcdebd956015ffb61ab4de7aff99c21ac944292f
+Author: elad <eladgarber@gmail.com>
+Date:   Mon Jan 13 20:52:11 2020 +0200
+
+    fixing buffer bug
+
+commit 2b38fd5318d719c60c86d6b08ed3217591a04410
+Author: elad <eladgarber@gmail.com>
+Date:   Mon Jan 13 19:54:27 2020 +0200
+
+    fixing Astar
+
+commit 7a89c181c3ee1ae9fc5141147e20dcbd195b609c
+Merge: fd4bd30 ae73468
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Mon Jan 13 19:47:07 2020 +0200
+
+    Merge pull request #37 from eladg7/fixing_astar
+    
+    fixing Astar
+
+commit ae73468f823b3848e6b06e9290e0bc606e6beb29
+Merge: df64f12 fd4bd30
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Mon Jan 13 19:47:01 2020 +0200
+
+    Merge branch 'master' into fixing_astar
+
+commit df64f12eb9981886f507d0ad895e5ea56680cdeb
+Author: elad <eladgarber@gmail.com>
+Date:   Mon Jan 13 19:45:23 2020 +0200
+
+    fixing Astar
+
+commit fd4bd308e6ed6fa7cb1ca446a7f5614c49b846cb
+Merge: 02629a4 a832de7
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Mon Jan 13 19:35:35 2020 +0200
+
+    Merge pull request #36 from eladg7/bestDebug
+    
+    best works
+
+commit a832de774892ec6c2c44da6698dacb3b73fcbdcc
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Mon Jan 13 19:29:54 2020 +0200
+
+    best works
+
+commit 02629a40be6b2128cd554e71371bc93c656faa8a
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Mon Jan 13 17:33:24 2020 +0200
+
+    Update README.md
+
+commit 9744125e63175d5f39aeff39e1ba165b97de5db6
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Mon Jan 13 17:32:57 2020 +0200
+
+    Update README.md
+
+commit 6af9e60dc96e5507b3252fc94399a693a67caf01
+Merge: 27c2e16 afab772
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Mon Jan 13 17:24:06 2020 +0200
+
+    Merge pull request #35 from eladg7/BFS_debug
+    
+    BFS running
+
+commit afab7728ee30a3fcf357557408f45684ee04c90c
+Author: elad <eladgarber@gmail.com>
+Date:   Mon Jan 13 17:23:44 2020 +0200
+
+    BFS running
+
+commit 27c2e1679769bb81e651d177e7cd5ef260ff50ca
+Merge: 9e71764 654ec69
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Sun Jan 12 21:00:13 2020 +0200
+
+    Merge pull request #34 from eladg7/implementing_astar
+    
+    implementing_astar
+
+commit 654ec692ed931bbd600dd0aada1fb9eb06d65547
+Merge: 5be8ac0 9e71764
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Sun Jan 12 21:00:06 2020 +0200
+
+    Merge branch 'master' into implementing_astar
+
+commit 5be8ac02b27685dbc9efb357ca64765aeb49b2e1
+Author: elad <eladgarber@gmail.com>
+Date:   Sun Jan 12 20:59:08 2020 +0200
+
+    string reverser
+
+commit 9e71764cbda78242255f8c309f614326befab70d
+Merge: 3fbc116 5d6bab8
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Sun Jan 12 20:05:19 2020 +0200
+
+    Merge pull request #33 from eladg7/last_string_reverser_touches
+    
+    fixing string reverser
+
+commit 5d6bab8c64e26dcb02c2a5344fa349407382eacf
+Author: elad <eladgarber@gmail.com>
+Date:   Sun Jan 12 20:05:02 2020 +0200
+
+    fixing string reverser
+
+commit 3fbc116efe8c894bf0e8f5e4afd3ea63f34fd1b3
+Merge: 3344ac7 b98fd22
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Sun Jan 12 19:50:15 2020 +0200
+
+    Merge pull request #32 from eladg7/updating_string_reverser
+    
+    updating string reverser and adding split function by string
+
+commit b98fd22eee7372aa29916d052c667fcc6f24bbb3
+Merge: 6ce27c6 3344ac7
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Sun Jan 12 19:50:07 2020 +0200
+
+    Merge branch 'master' into updating_string_reverser
+
+commit 6ce27c6d420939e699aecb075748b3d9a285eaad
+Author: elad <eladgarber@gmail.com>
+Date:   Sun Jan 12 19:48:54 2020 +0200
+
+    updating string reverser and adding split function by string
+
+commit 3344ac7d73860f954490675db59fa029c144285f
+Merge: 538598b 2070c29
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Sun Jan 12 18:20:04 2020 +0200
+
+    Merge pull request #31 from eladg7/debugAlgorithem
+    
+    works not finished checking if algorithem works properly
+
+commit 2070c29c10ffb460fefd2a41f871bf0411372a49
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Sun Jan 12 18:17:41 2020 +0200
+
+    works not finished checking if algorithem works properly
+
+commit 538598b268edcbab4e5e73857fa1d3877249c298
+Merge: bb069e1 a3c6a93
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Sun Jan 12 17:06:22 2020 +0200
+
+    Merge pull request #29 from eladg7/solver
+    
+    solver
+
+commit a3c6a937c190952230b2c272cc456a5e0fca3c39
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Sun Jan 12 17:05:20 2020 +0200
+
+    morechanges
+
+commit 702f527a9203f9ccb7e3b7b732c8da66d9795f65
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Sun Jan 12 16:58:43 2020 +0200
+
+    solver
+
+commit bb069e1874b27234daf6b4362f8d44ffefbc4b0e
+Merge: 43ec973 8e02780
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Sat Jan 11 17:41:51 2020 +0200
+
+    Merge pull request #28 from eladg7/debugMatrix
+    
+    searchers
+
+commit 8e0278012198ef63e3ef827524c24f9e3db97799
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Sat Jan 11 17:41:08 2020 +0200
+
+    searchers
+
+commit 43ec97322e90f385bbd2d250f63a6253c318f3ad
+Merge: 0b00204 c27f1e1
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Sat Jan 11 17:11:24 2020 +0200
+
+    Merge pull request #27 from eladg7/fixes
+    
+    matrix
+
+commit c27f1e1d8094daecffe676dc1ec4357df9829c1b
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Sat Jan 11 17:10:55 2020 +0200
+
+    matrix
+
+commit 0b0020480aea5d92a4b158f6e47883a72c878425
+Merge: a6735b3 10f2325
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Fri Jan 10 20:38:03 2020 +0200
+
+    Merge pull request #26 from eladg7/matrix
+    
+    searchers
+
+commit 10f2325c7b5f645878ffcc760106c8185fa14795
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Fri Jan 10 20:37:34 2020 +0200
+
+    searchers
+
+commit a6735b39623fc78e8cf056c204e4e01e2aad2ff8
+Merge: ae94f2d 260e33a
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Fri Jan 10 19:33:50 2020 +0200
+
+    Merge pull request #25 from eladg7/finishing_string_reverser
+    
+    fixing string reverser and buffer bugs (such as sending wrong messages, new line,...)
+
+commit 260e33a44b7f4ae6029623f88878f9484ae376ae
+Author: elad <eladgarber@gmail.com>
+Date:   Fri Jan 10 19:33:28 2020 +0200
+
+    fixing string reverser and buffer bugs (such as sending wrong messages, new line,...)
+
+commit ae94f2d2299f1c0f4633806a27239b1a9df31ffc
+Merge: 7288955 bb338d2
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Fri Jan 10 18:45:01 2020 +0200
+
+    Merge pull request #24 from eladg7/cleinthandler
+    
+    clietn
+
+commit bb338d2c032c900238ef9168ff6b350d66117f88
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Fri Jan 10 18:44:40 2020 +0200
+
+    clietn
+
+commit 7288955abafa4ddab3319b36357983e92ed5c1ac
+Merge: 2f7e103 31f62c4
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Fri Jan 10 18:22:08 2020 +0200
+
+    Merge pull request #23 from eladg7/fixing_buffer_handling
+    
+    improving string utils
+
+commit 31f62c4e020e9ee4014b77687cffd6e6b0521da4
+Author: elad <eladgarber@gmail.com>
+Date:   Fri Jan 10 18:21:50 2020 +0200
+
+    improving string utils
+
+commit 2f7e1036f4ca5b647b991b04489e29627443de3b
+Merge: 7f77010 ed8a748
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Fri Jan 10 18:00:14 2020 +0200
+
+    Merge pull request #22 from eladg7/changes
+    
+    fix connetion
+
+commit ed8a7485ebb9a7bf121e7b06d26fa6e6903beee1
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Fri Jan 10 17:59:29 2020 +0200
+
+    fix connetion
+
+commit 7f77010434d90a17332986f8104cbee56949278a
+Merge: 130dd64 3f7871c
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Fri Jan 10 17:38:10 2020 +0200
+
+    Merge pull request #21 from eladg7/fixing_cend_error
+    
+    fixing cend error and priority queue
+
+commit 3f7871c52870cc16d9d0d459c3bc5a8cc9cb630a
+Author: elad <eladgarber@gmail.com>
+Date:   Fri Jan 10 17:37:37 2020 +0200
+
+    string reverser
+
+commit 130dd64a34279b781e7456583b39f3f317217bc2
+Merge: cc9b540 af01192
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Fri Jan 10 17:30:38 2020 +0200
+
+    Merge pull request #20 from eladg7/edgesget
+    
+    edges
+
+commit af011923021201cd43c6b35b5fc47e0cc7e05122
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Fri Jan 10 17:30:09 2020 +0200
+
+    edges
+
+commit cc9b54033cf5f3d108a8e0c1ca00a6e486ef9183
+Merge: 74fa5fa d94624a
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Fri Jan 10 17:27:57 2020 +0200
+
+    Merge pull request #19 from eladg7/updating_state_operators_overloading
+    
+    fixing operator overloading and port
+
+commit d94624a0f7efb473b61c68be1fad7a0c039b881f
+Merge: 8a18744 74fa5fa
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Fri Jan 10 17:27:50 2020 +0200
+
+    Merge branch 'master' into updating_state_operators_overloading
+
+commit 8a1874442c614e5aed8e663d8c43b45c58b08199
+Author: elad <eladgarber@gmail.com>
+Date:   Fri Jan 10 17:26:49 2020 +0200
+
+    fixing operator overloading and port
+
+commit 74fa5fac4bfc16c7cd3962b4156f3260f24ea4f9
+Merge: abded48 b4936c9
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Fri Jan 10 17:25:44 2020 +0200
+
+    Merge pull request #18 from eladg7/BFS
+    
+    best fix
+
+commit b4936c9ac6ce55277a2078139bb6461334e99317
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Fri Jan 10 17:25:15 2020 +0200
+
+    best fix
+
+commit abded48ffbb58f159e101609cc31c3d9084f8606
+Merge: 04fb96c b4e422e
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Fri Jan 10 16:14:33 2020 +0200
+
+    Merge pull request #17 from eladg7/BFS
+    
+    best first search
+
+commit b4e422e049e55f14a0647110a2e619f8f4a4caba
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Fri Jan 10 15:15:44 2020 +0200
+
+    best first search
+
+commit 04fb96cbed3723d7745522fb5585d545acc9e34d
+Merge: 32f549e 7bd368b
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Fri Jan 10 13:21:02 2020 +0200
+
+    Merge pull request #16 from eladg7/srverUpdate
+    
+    updateserver
+
+commit 7bd368bd87335049adb07a11d7b0a2112781f2f1
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Fri Jan 10 13:20:32 2020 +0200
+
+    updateserver
+
+commit 32f549eadeccf0d4e87774a1b5bcc4c7a76abfb4
+Merge: 35fb72c f870557
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Fri Jan 10 12:16:54 2020 +0200
+
+    Merge pull request #15 from eladg7/searcher
+    
+    searcher
+
+commit f8705571d2866a42693b91aaa4dd77da611fcba9
+Merge: 898f809 35fb72c
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Fri Jan 10 12:16:42 2020 +0200
+
+    Merge branch 'master' into searcher
+
+commit 898f809b65b51f854d82906209de20f51d0b49ea
+Merge: 4261f2b ae48a5e
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Fri Jan 10 12:00:25 2020 +0200
+
+    Merge remote-tracking branch 'origin/THREADS' into THREADS
+
+commit 4261f2b09e9550761e371e12f5573744dd2f37ec
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Fri Jan 10 11:59:36 2020 +0200
+
+    added seracher
+
+commit 35fb72cf657dd9999714fcf320097b8fb55d5704
+Merge: e3c19d1 4104b8f
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 9 23:45:42 2020 +0200
+
+    Merge pull request #14 from eladg7/fixing_terminate_error
+    
+    fixing_terminate_error
+
+commit 4104b8f61ef5eb6712a023d0e2c87b254a35adfe
+Author: elad <eladgarber@gmail.com>
+Date:   Thu Jan 9 23:45:22 2020 +0200
+
+    string reverser
+
+commit ae48a5eb6311590e9bfb0072e154f5d915166dc4
+Merge: 7065984 e3c19d1
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Thu Jan 9 23:38:59 2020 +0200
+
+    Merge branch 'master' into THREADS
+
+commit 7065984b87651ee55472e9e9a726ba09ca73ad50
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Thu Jan 9 23:37:15 2020 +0200
+
+    stop after no connection
+
+commit e3c19d111179c96a930522082962a98a31edc012
+Merge: 047f30b 9351729
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 9 23:25:40 2020 +0200
+
+    Merge pull request #12 from eladg7/fixing_terminate_error
+    
+    fixing server thread
+
+commit 93517292b425bed806696a7aabdcd24bac3a8757
+Author: elad <eladgarber@gmail.com>
+Date:   Thu Jan 9 23:24:51 2020 +0200
+
+    string reverser
+
+commit 047f30b3710ab51d75a63387632191cfac5eda88
+Merge: 6572b66 12f8010
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 9 22:18:03 2020 +0200
+
+    Merge pull request #11 from eladg7/splitting_buffer_by_n
+    
+    string utils and removing generic
+
+commit 12f801078c8885f359ae9e9eb6a5851bd0db1f73
+Author: elad <eladgarber@gmail.com>
+Date:   Thu Jan 9 22:17:23 2020 +0200
+
+    string reverser
+
+commit 6572b66541c3bfcebbe619d358333599bf1e303d
+Merge: 1cdd210 76964ac
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 9 21:36:49 2020 +0200
+
+    Merge pull request #10 from eladg7/server_thread_work
+    
+    server work
+
+commit 76964ace6a3298abc60f2e0175979386006857a4
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Thu Jan 9 21:25:11 2020 +0200
+
+    server work
+
+commit 1cdd2109a189c4255e515439cac5baceb61ae592
+Merge: 93ad8b4 572e811
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 9 20:12:14 2020 +0200
+
+    Merge pull request #9 from eladg7/creating_server
+    
+    implementing server
+
+commit 572e81111314c165099d5aa5d7e622738958ca85
+Author: elad <eladgarber@gmail.com>
+Date:   Thu Jan 9 20:11:49 2020 +0200
+
+    implementing server
+
+commit 93ad8b44fe705080ec5792e6a22baaa963f8491b
+Merge: c54415d 150c3b8
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 9 18:25:04 2020 +0200
+
+    Merge pull request #8 from eladg7/clientHandler
+    
+    added client handler
+
+commit 150c3b87fc42fd2df512b54970729664addbff73
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Thu Jan 9 18:22:11 2020 +0200
+
+    added client handler
+
+commit c54415d1bb1fe3968e0784fc8c3848231c2ec78c
+Merge: fecbd6b 0ae0de9
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 9 17:30:18 2020 +0200
+
+    Merge pull request #7 from eladg7/creating_string_reverser
+    
+    string reverser
+
+commit 0ae0de9da43f9cf76e180e29f737f613515771e3
+Author: elad <eladgarber@gmail.com>
+Date:   Thu Jan 9 17:29:56 2020 +0200
+
+    string reverser
+
+commit fecbd6bf811ba4349a07ad5955dfcc7cd389ce80
+Merge: a8b9281 ed69fe6
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 9 17:17:13 2020 +0200
+
+    Merge pull request #6 from eladg7/implementing_clientHandler
+    
+    client handler
+
+commit ed69fe6d569889d61c3decafa49c4f439b4034d7
+Author: elad <eladgarber@gmail.com>
+Date:   Thu Jan 9 17:16:43 2020 +0200
+
+    client handler
+
+commit a8b92816b8301d4167b7dbaff944708ef62a488e
+Merge: 497fefd c718ec3
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Thu Jan 9 16:49:41 2020 +0200
+
+    Merge pull request #5 from eladg7/handler
+    
+    added Cahche manager
+
+commit c718ec38ad35ddf9dede30663f84c6b40306d7d7
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Thu Jan 9 16:49:13 2020 +0200
+
+    added Cahche manager
+
+commit 497fefde872388e698056abe49139a07b34fe09b
+Merge: dedcc63 cec0c9a
+Author: YekaterinaB <58707987+YekaterinaB@users.noreply.github.com>
+Date:   Tue Jan 7 17:14:28 2020 +0200
+
+    Merge pull request #4 from eladg7/cacheManager
+    
+    cacheManager
+
+commit cec0c9ad9831f79c26686a768e885e25770cf236
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Tue Jan 7 17:13:42 2020 +0200
+
+    added Cahche manager
+
+commit dedcc63d85163b42cd11abaca3e55a1e0f512eb2
+Merge: 72afb01 3edbdc3
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Tue Jan 7 16:46:03 2020 +0200
+
+    Merge pull request #2 from eladg7/cacheManager
+    
+    added Cahche manager
+
+commit 72afb01b6650d876bcc5fd2b9e21ebcea00ac4a5
+Merge: b6282fa f7a32f8
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Tue Jan 7 16:45:50 2020 +0200
+
+    Merge pull request #3 from eladg7/implementing_server
+    
+    Creating Server Class
+
+commit f7a32f8041d53f0cfa35815e2a5782551b74f1ad
+Author: elad <eladgarber@gmail.com>
+Date:   Tue Jan 7 16:45:24 2020 +0200
+
+    Creating Server Class
+
+commit 3edbdc358e9aeb429bcb4603ac5a79d640e0cb19
+Author: yekaterina <yekaterina.batashov@live.biu.ac.il>
+Date:   Tue Jan 7 12:39:19 2020 +0200
+
+    added Cahche manager
+
+commit b6282fac8e01ee42c5afc258dcf71815b7350834
+Merge: 5bb6d94 b12c4b1
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Tue Jan 7 11:56:41 2020 +0200
+
+    Merge pull request #1 from eladg7/creating_initial_iterfaces
+    
+    creating initial interfaces
+
+commit b12c4b1cd0a2d889e39bb448ae2ced5973aa33bc
+Author: elad <eladgarber@gmail.com>
+Date:   Tue Jan 7 11:56:22 2020 +0200
+
+    creating initial interfaces
+
+commit 5bb6d947963ea6e5fd1f3bd9971b48167293f06c
+Author: eladg7 <53472152+eladg7@users.noreply.github.com>
+Date:   Tue Jan 7 11:44:11 2020 +0200
+
+    Create README.md
+
+commit 908d8cde22442d35603a7c8b9091ae3c57f8af6d
+Author: elad <eladgarber@gmail.com>
+Date:   Tue Jan 7 11:43:22 2020 +0200
+
+    Initial commit
