@@ -28,7 +28,7 @@ private:
     }
 
 public:
-    explicit FileCacheManager(int capacity, const string &className) : AbstractCacheManager<T>(className) {
+    explicit FileCacheManager(int capacity, const string &cn) : AbstractCacheManager<T>(cn) {
         this->sizeCacheList = capacity;
     }
 

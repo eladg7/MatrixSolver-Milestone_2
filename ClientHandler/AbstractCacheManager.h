@@ -5,11 +5,6 @@
 
 template<typename T>
 class AbstractCacheManager : public CacheManager<T> {
-public:
-    explicit AbstractCacheManager(const string &cn) {
-        this->className = cn;
-    }
-
 protected:
     int sizeCacheList{};
     list<string> refrenceList;
@@ -55,6 +50,11 @@ protected:
         for (const string &key:this->refrenceList) {
             f(this->mymap[key]);
         }
+    }
+
+public:
+    explicit AbstractCacheManager(const string &cn) {
+        this->className = cn;
     }
 
     virtual ~AbstractCacheManager() {
