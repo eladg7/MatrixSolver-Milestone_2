@@ -128,7 +128,7 @@ void NodesEvaluatedTester::createSolutionFile(const string &solution,
         char cwd[256] = {0};
         getcwd(cwd, sizeof(cwd));
         strcat(cwd, "/");
-        fileObj.open(cwd + searcherName + "_" + dimension + ".bin", ios::binary | ios::out);
+        fileObj.open(cwd + searcherName + "_" + dimension + ".txt", ios::out);
         if (!fileObj) {
             throw "Error creating file.";
         }

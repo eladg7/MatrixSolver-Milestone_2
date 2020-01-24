@@ -19,7 +19,7 @@ namespace server_side {
 
     public:
 
-        virtual bool open(int port) = 0;
+        virtual bool open(int p) = 0;
 
         virtual void stop() {
             this->isRunning = false;
@@ -44,7 +44,9 @@ namespace server_side {
         virtual int getClientFromQueue() = 0;
 
         virtual int getSizeOfQueue() = 0;
+
         virtual void increseSizeOfQueue() = 0;
+
         virtual void decreseSizeOfQueue() = 0;
 
         virtual void closeClientSocket(int numberClient) {

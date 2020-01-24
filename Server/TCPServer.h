@@ -28,7 +28,7 @@ public:
 
     int acceptClient();
 
-    virtual bool open(int port);
+    virtual bool open(int p);
 
 };
 

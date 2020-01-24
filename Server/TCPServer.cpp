@@ -63,8 +63,8 @@ int TCPServer::acceptClient() {
 }
 
 
-bool TCPServer::open(int port) {
-    this->port = port;
+bool TCPServer::open(int p) {
+    this->port = p;
     int result = this->openSocket();
     if (result < 0) {
         this->stop();
